@@ -3,6 +3,7 @@ import librosa
 import numpy as np
 import laion_clap
 
+print(torch.__version__)
 
 def int16_to_float32(x):
     return (x / 32767.0).astype(np.float32)
@@ -12,19 +13,13 @@ def float32_to_int16(x):
     x = np.clip(x, a_min=-1., a_max=1.)
     return (x * 32767.).astype(np.int16)
 
-# Allow numpy scalar type needed by checkpoint
-torch.serialization.add_safe_globals([
-    np.core.multiarray.scalar,
-    np.dtype,           # the class
-    np.float64,         # the type
-])
-
 
 class CLAPWrapper:
     def __init__(self):
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         self.model = laion_clap.CLAP_Module(
-            enable_fusion=False
+            enable_fusion=False,
+            amodel= 'HTSAT-base'
         )
         self.model.load_ckpt("checkpoints/music_speech_audioset_epoch_15_esc_89.98.pt")
 
