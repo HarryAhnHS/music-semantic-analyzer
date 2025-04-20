@@ -1,0 +1,2 @@
+*.pt filter=lfs diff=lfs merge=lfs -text
+checkpoints/music_speech_audioset_epoch_15_esc_89.98.pt !text !filter !merge !diff
