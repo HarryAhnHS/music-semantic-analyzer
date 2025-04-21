@@ -21,6 +21,8 @@ def generate_tags_and_summary(metadata: dict, neighbors: list[dict]) -> tuple[li
     artist_bio = metadata.get("artist_bio", "")
     album_description = metadata.get("album_description", "")
     location = metadata.get("location", "")
+    track_type = metadata.get("track_type", "")
+    stem_type = metadata.get("stem_type", "")
 
     # Format neighbors
     neighbor_summaries = []
@@ -48,13 +50,14 @@ def generate_tags_and_summary(metadata: dict, neighbors: list[dict]) -> tuple[li
     - Tags: {", ".join(raw_tags)}
     - Artist Bio: {artist_bio}
     - Album Description: {album_description}
+    {f"- Stem Type: {stem_type}" if stem_type != "" else "- Track Type: {track_type}"}
 
     Here are a few similar tracks:
     {neighbor_text}
 
     ONLY RETURN RAW JSON (no markdown, no code blocks, no comments) with two fields:
     1. "tags": a list of lowercase descriptive semantic tags that are not related to song's metadata (e.g. "lo-fi", "vocals", "melancholic", "opium")
-    2. "summary": a 1–2 sentence natural description of the track's feel, style, and instrumentation."""
+    2. "summary": natural language description of the track's feel, style, and instrumentation."""
 
     response = client.chat.completions.create(
         model=os.getenv("TOGETHER_MODEL"),

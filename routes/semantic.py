@@ -22,7 +22,7 @@ async def analyze_song(file: UploadFile = File(...)):
     result = process_audio(file_path)
 
     return {
-        "status": "received",
+        "status": "analyzed",
         "filename": filename,
         "result": result
     }
