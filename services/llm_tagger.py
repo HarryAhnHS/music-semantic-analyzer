@@ -53,7 +53,7 @@ def generate_tags_and_summary(metadata: dict, neighbors: list[dict]) -> tuple[li
     {neighbor_text}
 
     ONLY RETURN RAW JSON (no markdown, no code blocks, no comments) with two fields:
-    1. "tags": a list of lowercase descriptive tags (e.g. "lo-fi", "vocals", "melancholic", "opium")
+    1. "tags": a list of lowercase descriptive semantic tags that are not related to song's metadata (e.g. "lo-fi", "vocals", "melancholic", "opium")
     2. "summary": a 1–2 sentence natural description of the track's feel, style, and instrumentation."""
 
     response = client.chat.completions.create(

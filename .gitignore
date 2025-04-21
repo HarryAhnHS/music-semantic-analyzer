@@ -26,6 +26,9 @@ wheels/
 # user uploads
 uploads/*
 
+# demucs
+upload_stems/htdemucs/*/*
+
 #checkpoints
 checkpoints/*.pt
 
