@@ -4,7 +4,7 @@ from together import Together
 from dotenv import load_dotenv
 
 load_dotenv()
-client = Together()  # Uses TOGETHER_API_KEY from .env
+client = Together()
 
 def generate_tags_and_summary(metadata: dict, neighbors: list[dict]) -> tuple[list[str], str]:
     chroma = metadata.get("chroma_vector", [])
@@ -17,32 +17,43 @@ def generate_tags_and_summary(metadata: dict, neighbors: list[dict]) -> tuple[li
     genre_names = metadata.get("genre_names", [])
     raw_tags = metadata.get("tags", [])
 
-    # Format neighbors for LLM context
+    # Extended metadata
+    artist_bio = metadata.get("artist_bio", "")
+    album_description = metadata.get("album_description", "")
+    location = metadata.get("location", "")
+
+    # Format neighbors
     neighbor_summaries = []
-    for n in neighbors:
-        neighbor_summaries.append(f"""- "{n.get('title', 'Unknown')}" by {n.get('artist', 'Unknown')} — genre: {n.get('genre', '')}, tags: {", ".join(n.get("tags", []))}""")
-    neighbor_text = "\n".join(neighbor_summaries)  # Limit to 5 neighbors
+    for n in neighbors[:5]:  # Limit to top 5
+        neighbor_summaries.append(
+            f"""- "{n.get('title', 'Unknown')}" by {n.get('artist', 'Unknown')} ({n.get('genre', 'unknown genre')}) — tags: {", ".join(n.get('tags', [])) or 'none'}, location: {n.get('location', 'unknown')}, album: {n.get('album', '')}"""
+        )
+    neighbor_text = "\n".join(neighbor_summaries)
 
     system_msg = (
-        "You're an expert music producer and musicologist. You receive audio-derived metadata and a few similar songs. "
-        "Based on this, write a short natural description and assign descriptive tags for the given track."
+        "You're an expert music producer and musicologist. You're given audio-derived features "
+        "and rich human metadata about a track and a few similar songs. Use this to write a short natural-language summary "
+        "of the input song's feel, style, and instrumentation, and provide descriptive tags."
     )
 
-    user_msg = f"""Here is the audio metadata for a track:
+    user_msg = f"""Input track details:
     - Title: {title}
     - Artist: {artist}
+    - Location: {location}
     - Tempo: {tempo} BPM
     - Duration: {duration} seconds
     - Chroma Vector (pitch class intensity): {chroma}
-    - Top Genre: {genre_top}
+    - Genre: {genre_top}
     - Genre Names: {", ".join(genre_names)}
-    - Human Tags: {", ".join(raw_tags)}
+    - Tags: {", ".join(raw_tags)}
+    - Artist Bio: {artist_bio}
+    - Album Description: {album_description}
 
-    Here are similar songs to use as reference:
+    Here are a few similar tracks:
     {neighbor_text}
 
     ONLY RETURN RAW JSON (no markdown, no code blocks, no comments) with two fields:
-    1. "tags": a list of 3–5 lowercase descriptive tags (e.g. "lo-fi", "vocals", "melancholic")
+    1. "tags": a list of lowercase descriptive tags (e.g. "lo-fi", "vocals", "melancholic", "opium")
     2. "summary": a 1–2 sentence natural description of the track's feel, style, and instrumentation."""
 
     response = client.chat.completions.create(

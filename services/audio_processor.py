@@ -1,34 +1,32 @@
 import numpy as np
-import librosa
+from pathlib import Path
 from services.clap_wrapper import CLAPWrapper
 from services.llm_tagger import generate_tags_and_summary
 from services.metadata_extractor import extract_metadata
-from services.semantic_index import load_tag_index, query_tag_index  # new
-
-# Load prebuilt semantic index (tag/summarization corpus)
-# tag_index, tag_metadata = load_tag_index("data/tagging_index/embeddings/clap_index.faiss", "data/tagging_index/metadata/metadata.json")
-
-# Load internal matching index (user uploads)
-# internal_index, internal_metadata = load_internal_index(...)  # optional for matchmaking
+from configs.index_configs import TAGGING_INDEX, TAGGING_META, INTERNAL_INDEX, INTERNAL_META
 
 def process_audio(file_path: str):
-    # 1. Get CLAP embedding
-    clap = CLAPWrapper()
-    embedding = clap.get_embedding(file_path)
+    # 1. Get CLAP embedding (shared)
+    clap_query = CLAPWrapper(TAGGING_INDEX, TAGGING_META)
+    embedding = clap_query.get_embedding(file_path)
 
-    # 2. Extract metadata (tempo, chroma, etc.)
+    # 2. Extract audio metadata
     metadata = extract_metadata(file_path)
 
-    # 3. Similarity search against pre-loaded external music semantic index (for tagging, summary)
-    # top_neighbors = query_tag_index(embedding, tag_index, tag_metadata, k=3)
+    # 3. Query tagging index for semantic neighbors (existing labeled tracks)
+    top_neighbors = clap_query.query_neighbors_with_tagging_metadata(embedding, k=3)
 
-    # 4. Generate tags and summary using LLM with context
-    # tags, summary = generate_tags_and_summary(metadata, top_neighbors)
+    # 4. Generate tags + summary using LLM
+    tags, summary = generate_tags_and_summary(metadata, top_neighbors)
+
+    clap_store = CLAPWrapper(INTERNAL_INDEX, INTERNAL_META)
+    clap_store.add_embedding_to_index(embedding)
+    clap_store.save_index()
 
     return {
         "embedding": [float(x) for x in embedding],
         "metadata": metadata,
-        # "neighbors": top_neighbors,
-        # "tags": tags,
-        # "summary": summary
+        "neighbors": top_neighbors,
+        "tags": tags,
+        "summary": summary
     }

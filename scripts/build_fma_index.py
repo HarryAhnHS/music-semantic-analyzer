@@ -2,18 +2,26 @@ import os
 import json
 from tqdm import tqdm
 import pandas as pd
-from pathlib import Path
 from time import time
+from bs4 import BeautifulSoup
 
 from services.clap_wrapper import CLAPWrapper
 from utils.audio_utils import get_audio_path
+from configs.index_configs import TAGGING_AUDIO_DIR, TRACKS_PATH, GENRE_MAP_PATH, TAGGING_INDEX, TAGGING_META
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-AUDIO_DIR = BASE_DIR / "data/tagging_index/fma/audio"
-METADATA_PATH = BASE_DIR / "data/tagging_index/fma/csv/tracks.csv"
-GENRE_MAP_PATH = BASE_DIR / "data/tagging_index/fma/csv/genres.csv"
-OUTPUT_INDEX = BASE_DIR / "data/tagging_index/embeddings/clap_index.faiss"
-OUTPUT_META = BASE_DIR / "data/tagging_index/metadata/metadata.json"
+def clean_html(text, max_len=500):
+    """Strip HTML and truncate long strings."""
+    if not text or not isinstance(text, str):
+        return ""
+    clean = BeautifulSoup(text, "html.parser").get_text(separator=" ", strip=True)
+    return clean[:max_len]
+
+def safe_eval(val):
+    """Safely eval list-like string fields."""
+    try:
+        return eval(val) if isinstance(val, str) else []
+    except:
+        return []
 
 def load_genre_map(genre_csv_path):
     df = pd.read_csv(genre_csv_path)
@@ -21,14 +29,14 @@ def load_genre_map(genre_csv_path):
 
 def main():
     print("🔄 Initializing CLAP model and loading metadata...")
-    clap = CLAPWrapper(faiss_path=OUTPUT_INDEX)
+    clap = CLAPWrapper(faiss_path=TAGGING_INDEX)
 
-    metadata = pd.read_csv(METADATA_PATH, index_col=0, header=[0, 1])
+    metadata = pd.read_csv(TRACKS_PATH, index_col=0, header=[0, 1])
     genre_map = load_genre_map(GENRE_MAP_PATH)
 
     # Load previously processed metadata if available
-    if OUTPUT_META.exists():
-        with open(OUTPUT_META, "r") as f:
+    if TAGGING_META.exists():
+        with open(TAGGING_META, "r") as f:
             output_meta = json.load(f)
         existing_ids = set(entry["id"] for entry in output_meta)
         print(f"⚠️ Found existing metadata: skipping {len(existing_ids)} already processed tracks.")
@@ -40,7 +48,7 @@ def main():
     track_ids_to_process = [tid for tid in metadata.index if int(tid) not in existing_ids]
     total = len(track_ids_to_process)
 
-    print(f"\n📦 Dataset: {AUDIO_DIR.name}")
+    print(f"\n📦 Dataset: {TAGGING_AUDIO_DIR.name}")
     print(f"🎯 Attempting to process {total} new tracks...\n")
 
     processed = 0
@@ -52,7 +60,7 @@ def main():
 
     try:
         for i, track_id in enumerate(tqdm(track_ids_to_process, desc="🎧 Processing tracks")):
-            path = get_audio_path(AUDIO_DIR, track_id)
+            path = get_audio_path(TAGGING_AUDIO_DIR, track_id)
             if not os.path.exists(path):
                 skipped_missing += 1
                 continue
@@ -72,12 +80,21 @@ def main():
             genre_names = [genre_map.get(gid) for gid in genre_ids if gid in genre_map]
 
             output_meta.append({
-                "id": int(track_id),
-                "title": row.get(("track", "title"), ""),
-                "artist": row.get(("artist", "name"), ""),
-                "genre": row.get(("track", "genre_top"), ""),
-                "genre_names": genre_names,
-                "tags": eval(row.get(("track", "tags"), "[]")) if isinstance(row.get(("track", "tags"), None), str) else [],
+                    "id": int(track_id),
+                    "title": str(row.get(("track", "title"), "")),
+                    "artist": str(row.get(("artist", "name"), "")),
+                    "album": str(row.get(("album", "title"), "")),
+                    "genre": str(row.get(("track", "genre_top")) or "").lower(),
+                    "genre_names": [str(g).lower() for g in genre_names if g],
+                    "duration": float(row.get(("track", "duration"))) if pd.notnull(row.get(("track", "duration"))) else None,
+                    "tags": [str(t).lower() for t in safe_eval(row.get(("track", "tags")))],
+                    "artist_bio": clean_html(row.get(("artist", "bio"), ""), max_len=400),
+                    "artist_projects": clean_html(row.get(("artist", "related_projects"), ""), max_len=300),
+                    "artist_website": str(row.get(("artist", "website"), "")),
+                    "album_description": clean_html(row.get(("album", "information"), ""), max_len=400),
+                    "album_engineer": str(row.get(("album", "engineer"), "")),
+                    "license": str(row.get(("track", "license"), "")),
+                    "location": str(row.get(("artist", "location"), "")),
             })
 
             processed += 1
@@ -87,9 +104,9 @@ def main():
     finally:
         duration = time() - start_time
         print("\n💾 Saving FAISS index and metadata...")
-        os.makedirs(os.path.dirname(OUTPUT_META), exist_ok=True)
+        os.makedirs(os.path.dirname(TAGGING_META), exist_ok=True)
         clap.save_index()
-        with open(OUTPUT_META, "w") as f:
+        with open(TAGGING_META, "w") as f:
             json.dump(output_meta, f, indent=2)
 
         print(f"\n🎉 Done in {duration:.1f}s")
