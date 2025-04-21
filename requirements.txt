@@ -16,6 +16,7 @@ docker-pycreds==0.4.0
 dotenv==0.9.9
 eval_type_backport==0.2.2
 exceptiongroup==1.2.2
+faiss-cpu==1.10.0
 fastapi==0.115.12
 filelock==3.18.0
 frozenlist==1.6.0

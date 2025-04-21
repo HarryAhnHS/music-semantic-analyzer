@@ -23,11 +23,17 @@ wheels/
 *.egg
 .venv/*
 
-#uploads
+# user uploads
 uploads/*
 
 #checkpoints
 checkpoints/*.pt
+
+# data/tagging_index/embeddings
+data/tagging_index/embeddings/* 
+data/tagging_index/fma/audio/*
+data/tagging_index/fma/csv/*
+data/tagging_index/fma/metadata/*
 
 # Environment variables
 .env

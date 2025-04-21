@@ -1,0 +1,3323 @@
+[
+  {
+    "id": 2,
+    "title": "Food",
+    "artist": "AWOL",
+    "genre": "Hip-Hop",
+    "genre_names": [
+      "Hip-Hop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 5,
+    "title": "This World",
+    "artist": "AWOL",
+    "genre": "Hip-Hop",
+    "genre_names": [
+      "Hip-Hop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 10,
+    "title": "Freeway",
+    "artist": "Kurt Vile",
+    "genre": "Pop",
+    "genre_names": [
+      "Pop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 140,
+    "title": "Queen Of The Wires",
+    "artist": "Alec K. Redfearn & the Eyesores",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 141,
+    "title": "Ohio",
+    "artist": "Alec K. Redfearn & the Eyesores",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 148,
+    "title": "Blackout 2",
+    "artist": "Contradiction",
+    "genre": "Experimental",
+    "genre_names": [
+      "Avant-Garde",
+      "Experimental"
+    ],
+    "tags": []
+  },
+  {
+    "id": 182,
+    "title": "Jules Lost His Jewels",
+    "artist": "Ariel Pink's Haunted Graffiti",
+    "genre": "Rock",
+    "genre_names": [
+      "Lo-Fi",
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 190,
+    "title": "Castle Of Stars",
+    "artist": "Ed Askew",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 193,
+    "title": "Here With You",
+    "artist": "Ed Askew",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 194,
+    "title": "All I want to Do",
+    "artist": "Ed Askew",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 197,
+    "title": "Piano 2",
+    "artist": "Ed Askew",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 200,
+    "title": "Baby Come Home",
+    "artist": "Ed Askew",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 203,
+    "title": "Song For R",
+    "artist": "Ed Askew",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 204,
+    "title": "My Dream",
+    "artist": "Ed Askew",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 207,
+    "title": "Piano 3",
+    "artist": "Ed Askew",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 210,
+    "title": "In the French Court",
+    "artist": "Ed Askew",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 211,
+    "title": "In America",
+    "artist": "Ed Askew",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 212,
+    "title": "When I Arive",
+    "artist": "Ed Askew",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 213,
+    "title": "Boute",
+    "artist": "Au",
+    "genre": "Pop",
+    "genre_names": [
+      "Pop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 255,
+    "title": "We Want to be Old",
+    "artist": "Bird Names",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 256,
+    "title": "Toggle",
+    "artist": "Black Elk",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock",
+      "Metal"
+    ],
+    "tags": []
+  },
+  {
+    "id": 368,
+    "title": "Vampires",
+    "artist": "Blah Blah Blah",
+    "genre": "Rock",
+    "genre_names": [
+      "Post-Punk",
+      "Rock",
+      "Punk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 424,
+    "title": "The Ambient Honky",
+    "artist": "Brian Joseph Davis",
+    "genre": "Experimental",
+    "genre_names": [
+      "Avant-Garde",
+      "Experimental"
+    ],
+    "tags": []
+  },
+  {
+    "id": 459,
+    "title": "Machines and Muscles",
+    "artist": "CAVE",
+    "genre": "Rock",
+    "genre_names": [
+      "Krautrock",
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 534,
+    "title": "I Can See You",
+    "artist": "Charles Manson",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 540,
+    "title": "The Black Pirate",
+    "artist": "Charles Manson",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 546,
+    "title": "If You Have No One",
+    "artist": "Charles Manson",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 574,
+    "title": "Caliente Queen",
+    "artist": "Clockcleaner",
+    "genre": "Rock",
+    "genre_names": [
+      "Punk",
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 602,
+    "title": "Disappearing",
+    "artist": "Dora Bleu",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 615,
+    "title": "Immaterial, side A",
+    "artist": "EKG",
+    "genre": "Experimental",
+    "genre_names": [
+      "Electroacoustic",
+      "Experimental"
+    ],
+    "tags": []
+  },
+  {
+    "id": 620,
+    "title": "Arabesque",
+    "artist": "Ed Askew",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 621,
+    "title": "Blue Eyed Baby",
+    "artist": "Ed Askew",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 625,
+    "title": "Climbing To The Top",
+    "artist": "Ed Askew",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 666,
+    "title": "Heat",
+    "artist": "Explode Into Colors",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Reggae - Dub"
+    ],
+    "tags": []
+  },
+  {
+    "id": 667,
+    "title": "Sharpen The Knife",
+    "artist": "Explode Into Colors",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Reggae - Dub"
+    ],
+    "tags": []
+  },
+  {
+    "id": 676,
+    "title": "The Tension",
+    "artist": "Fanatic",
+    "genre": "Hip-Hop",
+    "genre_names": [
+      "Hip-Hop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 690,
+    "title": "Cataclysm",
+    "artist": "Flying Luttenbachers",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 694,
+    "title": "Planet Say (featuring Faust)",
+    "artist": "Food For Animals",
+    "genre": "Hip-Hop",
+    "genre_names": [
+      "Hip-Hop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 695,
+    "title": "Elephants",
+    "artist": "Food For Animals",
+    "genre": "Hip-Hop",
+    "genre_names": [
+      "Hip-Hop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 704,
+    "title": "Mano De Dios",
+    "artist": "F\u00f3sforo",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Latin America"
+    ],
+    "tags": []
+  },
+  {
+    "id": 705,
+    "title": "Tio Cocodrilo",
+    "artist": "F\u00f3sforo",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Latin America"
+    ],
+    "tags": []
+  },
+  {
+    "id": 706,
+    "title": "Esto Es Califas",
+    "artist": "F\u00f3sforo",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Latin America"
+    ],
+    "tags": []
+  },
+  {
+    "id": 707,
+    "title": "Cochabamba",
+    "artist": "F\u00f3sforo",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Latin America"
+    ],
+    "tags": []
+  },
+  {
+    "id": 708,
+    "title": "Desconocido",
+    "artist": "F\u00f3sforo",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Latin America"
+    ],
+    "tags": []
+  },
+  {
+    "id": 709,
+    "title": "Cumbia De Obama",
+    "artist": "F\u00f3sforo",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Latin America"
+    ],
+    "tags": []
+  },
+  {
+    "id": 714,
+    "title": "Circle Moon",
+    "artist": "Fursaxa",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 715,
+    "title": "Kokopelli",
+    "artist": "Fursaxa",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 716,
+    "title": "Saxalainen",
+    "artist": "Fursaxa",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 718,
+    "title": "Song Of The Spindle Berry",
+    "artist": "Fursaxa",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 777,
+    "title": "Relaxing",
+    "artist": "Glove Compartment",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 814,
+    "title": "Motion Passings",
+    "artist": "Hall Of Fame",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 821,
+    "title": "Sir",
+    "artist": "Hecuba",
+    "genre": "Pop",
+    "genre_names": [
+      "Pop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 822,
+    "title": "Tom & Jerry",
+    "artist": "Hecuba",
+    "genre": "Pop",
+    "genre_names": [
+      "Pop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 825,
+    "title": "Death March",
+    "artist": "Here Comes A Big Black Cloud!!",
+    "genre": "Rock",
+    "genre_names": [
+      "Psych-Rock",
+      "Indie-Rock",
+      "Rock",
+      "Loud-Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 853,
+    "title": "Welsinsni Melodyi",
+    "artist": "Hutzl Ukranian Ensemble",
+    "genre": "International",
+    "genre_names": [
+      "International"
+    ],
+    "tags": []
+  },
+  {
+    "id": 890,
+    "title": "Softly Tomorrow",
+    "artist": "Ilyas Ahmed",
+    "genre": "Folk",
+    "genre_names": [
+      "Free-Folk",
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 892,
+    "title": "Phantom Sky",
+    "artist": "Ilyas Ahmed",
+    "genre": "Folk",
+    "genre_names": [
+      "Free-Folk",
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 897,
+    "title": "02",
+    "artist": "Infinite Body",
+    "genre": "Experimental",
+    "genre_names": [
+      "Noise",
+      "Experimental"
+    ],
+    "tags": []
+  },
+  {
+    "id": 993,
+    "title": "Or So I've Been Told",
+    "artist": "Jad Fair and Jason Willett",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": [
+      "baltimore"
+    ]
+  },
+  {
+    "id": 995,
+    "title": "No Good Deed Goes Unpunished",
+    "artist": "Kevin Shields",
+    "genre": "Experimental",
+    "genre_names": [
+      "Noise",
+      "Experimental"
+    ],
+    "tags": []
+  },
+  {
+    "id": 997,
+    "title": "Nothing's Ever Ending",
+    "artist": "Kevin Shields",
+    "genre": "Experimental",
+    "genre_names": [
+      "Noise",
+      "Experimental"
+    ],
+    "tags": []
+  },
+  {
+    "id": 998,
+    "title": "Apparently",
+    "artist": "Kevin Shields",
+    "genre": "Experimental",
+    "genre_names": [
+      "Noise",
+      "Experimental"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1039,
+    "title": "13 Monsters",
+    "artist": "Lightning Bolt",
+    "genre": "Rock",
+    "genre_names": [
+      "Loud-Rock",
+      "Rock",
+      "Noise-Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1040,
+    "title": "Dracula Mountain",
+    "artist": "Lightning Bolt",
+    "genre": "Rock",
+    "genre_names": [
+      "Loud-Rock",
+      "Rock",
+      "Noise-Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1066,
+    "title": "Helicopter de Cristal",
+    "artist": "Lucky Dragons",
+    "genre": "Experimental",
+    "genre_names": [
+      "Experimental",
+      "Audio Collage"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1069,
+    "title": "Un Lagrima en la Discoteca",
+    "artist": "Lucky Dragons",
+    "genre": "Experimental",
+    "genre_names": [
+      "Experimental",
+      "Audio Collage"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1073,
+    "title": "Onda Tocadisco",
+    "artist": "Lucky Dragons",
+    "genre": "Experimental",
+    "genre_names": [
+      "Experimental",
+      "Audio Collage"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1075,
+    "title": "Painful Corazon",
+    "artist": "Lucky Dragons",
+    "genre": "Experimental",
+    "genre_names": [
+      "Experimental",
+      "Audio Collage"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1082,
+    "title": "Nam Nhi-tu",
+    "artist": "M. Nguyen Van Minh-Con",
+    "genre": "International",
+    "genre_names": [
+      "International"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1083,
+    "title": "Feasting on Energy",
+    "artist": "Magic Lantern",
+    "genre": "Experimental",
+    "genre_names": [
+      "Avant-Garde",
+      "Experimental"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1087,
+    "title": "Tell The Police The Truth",
+    "artist": "Mahjongg",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1102,
+    "title": "Rare Vodka from the Fourteenth Century",
+    "artist": "Mary Halvorson and Weasel Walter",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1193,
+    "title": "Wooly Mammoth's Absence",
+    "artist": "Mount Eerie",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1195,
+    "title": "With My Hands Out",
+    "artist": "Mount Eerie",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1196,
+    "title": "2 Blonde Braids",
+    "artist": "Mount Eerie",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1197,
+    "title": "My Burning",
+    "artist": "Mount Eerie",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1249,
+    "title": "\"Cleanse Bath\" 10\" Metal Laquer",
+    "artist": "Nautical Almanac",
+    "genre": "Experimental",
+    "genre_names": [
+      "Noise",
+      "Experimental"
+    ],
+    "tags": [
+      "baltimore"
+    ]
+  },
+  {
+    "id": 1259,
+    "title": "Rolling In The Green",
+    "artist": "Nautical Almanac",
+    "genre": "Experimental",
+    "genre_names": [
+      "Noise",
+      "Experimental"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1270,
+    "title": "Cocksuckerbastardmotherfucker",
+    "artist": "Necropolis",
+    "genre": "Rock",
+    "genre_names": [
+      "Punk",
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1276,
+    "title": "Richard Nixon Died Today",
+    "artist": "Negativland",
+    "genre": "Experimental",
+    "genre_names": [
+      "Experimental",
+      "Audio Collage"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1277,
+    "title": "No Business",
+    "artist": "Negativland",
+    "genre": "Experimental",
+    "genre_names": [
+      "Experimental",
+      "Audio Collage"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1278,
+    "title": "Downloading",
+    "artist": "Negativland",
+    "genre": "Experimental",
+    "genre_names": [
+      "Experimental",
+      "Audio Collage"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1417,
+    "title": "Guns of Thunder",
+    "artist": "Pierced Arrows",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1427,
+    "title": "I Feel Evils",
+    "artist": "Plastic Crimewave Sound",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1443,
+    "title": "Time Fist",
+    "artist": "Pocahaunted",
+    "genre": "Experimental",
+    "genre_names": [
+      "Experimental",
+      "Drone"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1482,
+    "title": "Reindeer Dance",
+    "artist": "Rainbro",
+    "genre": "Electronic",
+    "genre_names": [
+      "Electronic"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1510,
+    "title": "Zombie",
+    "artist": "Ric Royer &amp; G. Lucas Crane",
+    "genre": "Experimental",
+    "genre_names": [
+      "Noise",
+      "Experimental"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1544,
+    "title": "Song of The Stations",
+    "artist": "Samara Lubelski",
+    "genre": "Folk",
+    "genre_names": [
+      "Psych-Folk",
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1642,
+    "title": "Hrz",
+    "artist": "So Cow",
+    "genre": "Pop",
+    "genre_names": [
+      "Pop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1644,
+    "title": "Outskirts",
+    "artist": "So Cow",
+    "genre": "Pop",
+    "genre_names": [
+      "Pop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1649,
+    "title": "Inis Meain",
+    "artist": "So Cow",
+    "genre": "Pop",
+    "genre_names": [
+      "Pop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1661,
+    "title": "Only Fools and Horses Theme",
+    "artist": "So Cow",
+    "genre": "Pop",
+    "genre_names": [
+      "Pop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1663,
+    "title": "So High",
+    "artist": "Softboiled Eggies",
+    "genre": "Pop",
+    "genre_names": [
+      "Pop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1666,
+    "title": "She Fell Through the Trees",
+    "artist": "Softboiled Eggies",
+    "genre": "Pop",
+    "genre_names": [
+      "Pop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1673,
+    "title": "Track 07",
+    "artist": "Solemn Man",
+    "genre": "Experimental",
+    "genre_names": [
+      "Experimental",
+      "Field Recordings"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1680,
+    "title": "Bashraf Salama",
+    "artist": "The Sounds of Taraab",
+    "genre": "International",
+    "genre_names": [
+      "International"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1681,
+    "title": "Daka Kozi Manowe",
+    "artist": "The Sounds of Taraab",
+    "genre": "International",
+    "genre_names": [
+      "International"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1682,
+    "title": "Nie Zama Nie Sema",
+    "artist": "The Sounds of Taraab",
+    "genre": "International",
+    "genre_names": [
+      "International"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1683,
+    "title": "Mapenzi Matamu",
+    "artist": "The Sounds of Taraab",
+    "genre": "International",
+    "genre_names": [
+      "International"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1684,
+    "title": "Mahaba Wa Taka Nini",
+    "artist": "The Sounds of Taraab",
+    "genre": "International",
+    "genre_names": [
+      "International"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1685,
+    "title": "Eni Wana Damu",
+    "artist": "The Sounds of Taraab",
+    "genre": "International",
+    "genre_names": [
+      "International"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1686,
+    "title": "Rufiji",
+    "artist": "The Sounds of Taraab",
+    "genre": "International",
+    "genre_names": [
+      "International"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1687,
+    "title": "Lala, Mpenzi Lala",
+    "artist": "The Sounds of Taraab",
+    "genre": "International",
+    "genre_names": [
+      "International"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1688,
+    "title": "Sishituki",
+    "artist": "The Sounds of Taraab",
+    "genre": "International",
+    "genre_names": [
+      "International"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1689,
+    "title": "Unalo",
+    "artist": "The Sounds of Taraab",
+    "genre": "International",
+    "genre_names": [
+      "International"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1701,
+    "title": "Clouds",
+    "artist": "Spires That in the Sunset Rise",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1702,
+    "title": "Java Pop",
+    "artist": "Spires That in the Sunset Rise",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1703,
+    "title": "Equus Haar",
+    "artist": "Spires That in the Sunset Rise",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1704,
+    "title": "Morning Song",
+    "artist": "Spires That in the Sunset Rise",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1706,
+    "title": "In the Pineys",
+    "artist": "Strapping Fieldhands",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1720,
+    "title": "Harken Sunshine",
+    "artist": "Sun Araw",
+    "genre": "Rock",
+    "genre_names": [
+      "Psych-Rock",
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1732,
+    "title": "Black Jerusalem",
+    "artist": "Teeth Mountain",
+    "genre": "Experimental",
+    "genre_names": [
+      "Experimental"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1733,
+    "title": "Keinsein",
+    "artist": "Teeth Mountain",
+    "genre": "Experimental",
+    "genre_names": [
+      "Experimental"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1735,
+    "title": "Ghost Science",
+    "artist": "Teeth Mountain",
+    "genre": "Experimental",
+    "genre_names": [
+      "Experimental"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1736,
+    "title": "Soft Beast",
+    "artist": "Teeth Mountain",
+    "genre": "Experimental",
+    "genre_names": [
+      "Experimental"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1883,
+    "title": "I Do What I Do",
+    "artist": "The Yolks",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1891,
+    "title": "Kids In Cars",
+    "artist": "Thee Oh Sees",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1893,
+    "title": "Memories",
+    "artist": "Tommy Jay",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1924,
+    "title": "Calling For You",
+    "artist": "The Twin Atlas",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1925,
+    "title": "Happy At The Wheel",
+    "artist": "The Twin Atlas",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 1929,
+    "title": "Buzz Chant",
+    "artist": "U.S. Girls",
+    "genre": "Experimental",
+    "genre_names": [
+      "Avant-Garde",
+      "Experimental"
+    ],
+    "tags": [
+      "avant garde",
+      "experimental",
+      "noise",
+      "san francisco",
+      "big city orchestrae",
+      "big city orchestrae womens auxiliary",
+      "american cassette noise network",
+      "baltimore"
+    ]
+  },
+  {
+    "id": 1930,
+    "title": "So Thereby...and furthermore...thus henceforth...Mono",
+    "artist": "Upsilon Acrux",
+    "genre": "Rock",
+    "genre_names": [
+      "Progressive",
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 2012,
+    "title": "The White Mice",
+    "artist": "White Mice",
+    "genre": "Experimental",
+    "genre_names": [
+      "Noise",
+      "Experimental"
+    ],
+    "tags": []
+  },
+  {
+    "id": 2096,
+    "title": "title unknown",
+    "artist": "Grouper",
+    "genre": "Experimental",
+    "genre_names": [
+      "Experimental"
+    ],
+    "tags": []
+  },
+  {
+    "id": 2097,
+    "title": "My Sweet Miasma",
+    "artist": "Hall Of Fame",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 2099,
+    "title": "....like bacon sundays",
+    "artist": "luc",
+    "genre": "Pop",
+    "genre_names": [
+      "Pop",
+      "Experimental Pop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3263,
+    "title": "A Date",
+    "artist": "Ai Aso",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3264,
+    "title": "Tee Te Te",
+    "artist": "Ai Aso",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3265,
+    "title": "Lavender",
+    "artist": "Ai Aso",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3266,
+    "title": "Land",
+    "artist": "Ai Aso",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3270,
+    "title": "Song for Obol",
+    "artist": "Arborea",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3271,
+    "title": "Beirut",
+    "artist": "Arborea",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3272,
+    "title": "Seadrift",
+    "artist": "Arborea",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3273,
+    "title": "Redbird",
+    "artist": "Arborea",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3274,
+    "title": "Forewarned",
+    "artist": "Arborea",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3492,
+    "title": "On The Wings",
+    "artist": "Citay",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3532,
+    "title": "Heaven Is Human",
+    "artist": "Cryptacize",
+    "genre": "Pop",
+    "genre_names": [
+      "Pop",
+      "Experimental Pop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3533,
+    "title": "New Spell",
+    "artist": "Cryptacize",
+    "genre": "Pop",
+    "genre_names": [
+      "Pop",
+      "Experimental Pop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3534,
+    "title": "Cosmic Sing-a-long",
+    "artist": "Cryptacize",
+    "genre": "Pop",
+    "genre_names": [
+      "Pop",
+      "Experimental Pop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3535,
+    "title": "No Coins",
+    "artist": "Cryptacize",
+    "genre": "Pop",
+    "genre_names": [
+      "Pop",
+      "Experimental Pop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3537,
+    "title": "We'll Never Dream Again",
+    "artist": "Cryptacize",
+    "genre": "Pop",
+    "genre_names": [
+      "Pop",
+      "Experimental Pop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3538,
+    "title": "Say You Will",
+    "artist": "Cryptacize",
+    "genre": "Pop",
+    "genre_names": [
+      "Pop",
+      "Experimental Pop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3573,
+    "title": "Piggled",
+    "artist": "Dan Deacon",
+    "genre": "Electronic",
+    "genre_names": [
+      "Electronic"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3598,
+    "title": "Little Eyes",
+    "artist": "Ed Askew",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3624,
+    "title": "Days of Summer",
+    "artist": "Fallen Leaves",
+    "genre": "Rock",
+    "genre_names": [
+      "Post-Punk",
+      "Rock",
+      "Punk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3707,
+    "title": "Stable the Spuds",
+    "artist": "Gary Higgins",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3708,
+    "title": "Thicker Than A Smokey",
+    "artist": "Gary Higgins",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3720,
+    "title": "Walking on the Water",
+    "artist": "Indian Jewelry",
+    "genre": "Rock",
+    "genre_names": [
+      "Psych-Rock",
+      "Loud-Rock",
+      "Rock",
+      "Noise-Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3721,
+    "title": "Pow Wow",
+    "artist": "Indian Jewelry",
+    "genre": "Rock",
+    "genre_names": [
+      "Psych-Rock",
+      "Loud-Rock",
+      "Rock",
+      "Noise-Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3722,
+    "title": "Swans",
+    "artist": "Indian Jewelry",
+    "genre": "Rock",
+    "genre_names": [
+      "Psych-Rock",
+      "Loud-Rock",
+      "Rock",
+      "Noise-Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3724,
+    "title": "Temporary Famine Ship",
+    "artist": "Indian Jewelry",
+    "genre": "Rock",
+    "genre_names": [
+      "Psych-Rock",
+      "Loud-Rock",
+      "Rock",
+      "Noise-Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3725,
+    "title": "West Alabama",
+    "artist": "Indian Jewelry",
+    "genre": "Rock",
+    "genre_names": [
+      "Psych-Rock",
+      "Loud-Rock",
+      "Rock",
+      "Noise-Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3761,
+    "title": "Improv",
+    "artist": "Kinski",
+    "genre": "Rock",
+    "genre_names": [
+      "Post-Rock",
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3762,
+    "title": "Snowy Parts of Scandinavia",
+    "artist": "Kinski",
+    "genre": "Rock",
+    "genre_names": [
+      "Post-Rock",
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3763,
+    "title": "Shelley Winters Overdrive",
+    "artist": "Kinski",
+    "genre": "Rock",
+    "genre_names": [
+      "Post-Rock",
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3765,
+    "title": "Waves of Second Guessing",
+    "artist": "Kinski",
+    "genre": "Rock",
+    "genre_names": [
+      "Post-Rock",
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3766,
+    "title": "Rhode Island Freakout",
+    "artist": "Kinski",
+    "genre": "Rock",
+    "genre_names": [
+      "Post-Rock",
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3775,
+    "title": "Cumbia Infierno",
+    "artist": "La Troba Kung-Fu",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Polka",
+      "Latin America"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3776,
+    "title": "La Canco de Lladre",
+    "artist": "La Troba Kung-Fu",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Polka",
+      "Latin America"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3777,
+    "title": "Volant",
+    "artist": "La Troba Kung-Fu",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Polka",
+      "Latin America"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3778,
+    "title": "Calor Calor",
+    "artist": "La Troba Kung-Fu",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Polka",
+      "Latin America"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3779,
+    "title": "Rock Rumba",
+    "artist": "La Troba Kung-Fu",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Polka",
+      "Latin America"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3832,
+    "title": "Bedoin Song",
+    "artist": "Lior",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3833,
+    "title": "Track 01",
+    "artist": "Lightning Bolt",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3840,
+    "title": "Track 08",
+    "artist": "Lightning Bolt",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3880,
+    "title": "Crawling",
+    "artist": "Mary Halvorson and Jessica Pavone",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3895,
+    "title": "Invitita and de Cingheri from Transylvania",
+    "artist": "MetroFolk",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3896,
+    "title": "Gypsy Csardas and Men's Dances from Kalotaszeg",
+    "artist": "MetroFolk",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3904,
+    "title": "Sometimes",
+    "artist": "Michael Chapman",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3905,
+    "title": "Twisted Road",
+    "artist": "Michael Chapman",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3906,
+    "title": "Sometimes",
+    "artist": "Michael Chapman",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3908,
+    "title": "Caddo Lake",
+    "artist": "Michael Chapman",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3909,
+    "title": "Dewbury Road / That Time of Night",
+    "artist": "Michael Chapman",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3910,
+    "title": "Kodak Ghosts",
+    "artist": "Michael Chapman",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3911,
+    "title": "Dust Devils",
+    "artist": "Michael Chapman",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3912,
+    "title": "Fahey's Flag",
+    "artist": "Michael Chapman",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3913,
+    "title": "Memhpis in Winter",
+    "artist": "Michael Chapman",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3920,
+    "title": "Fragrant Rota",
+    "artist": "Michael Holt",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3921,
+    "title": "Hiawatha's Lullaby",
+    "artist": "Michael Holt",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 3950,
+    "title": "Click Click Bang Bang",
+    "artist": "Miss Derringer",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock",
+      "Garage"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4013,
+    "title": "Ravens",
+    "artist": "Nalle",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4017,
+    "title": "New Roots",
+    "artist": "Nalle",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4022,
+    "title": "Can't Tell No One",
+    "artist": "Negative Approach",
+    "genre": "Rock",
+    "genre_names": [
+      "Punk",
+      "Rock",
+      "Hardcore"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4037,
+    "title": "Oh! Mighty Engine",
+    "artist": "Neil Halstead",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk",
+      "Singer-Songwriter"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4066,
+    "title": "Soleade",
+    "artist": "Peter Walker",
+    "genre": "Folk",
+    "genre_names": [
+      "Psych-Folk",
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4067,
+    "title": "Por Rosa",
+    "artist": "Peter Walker",
+    "genre": "Folk",
+    "genre_names": [
+      "Psych-Folk",
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4068,
+    "title": "Alegrias Variation",
+    "artist": "Peter Walker",
+    "genre": "Folk",
+    "genre_names": [
+      "Psych-Folk",
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4069,
+    "title": "Tune on Karen Dalton's Guitar",
+    "artist": "Peter Walker",
+    "genre": "Folk",
+    "genre_names": [
+      "Psych-Folk",
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4070,
+    "title": "Nuevos Ojos",
+    "artist": "Pistolera",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Latin America"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4071,
+    "title": "Mentirosas",
+    "artist": "Pistolera",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Latin America"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4072,
+    "title": "Tatuaje",
+    "artist": "Pistolera",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Latin America"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4073,
+    "title": "Policia",
+    "artist": "Pistolera",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Latin America"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4074,
+    "title": "Vieja",
+    "artist": "Pistolera",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Latin America"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4075,
+    "title": "Un Momento",
+    "artist": "Pistolera",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Latin America"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4076,
+    "title": "No te Olvidare",
+    "artist": "Pistolera",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Latin America"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4077,
+    "title": "Algo Pa que te Olvides",
+    "artist": "Pistolera",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Latin America"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4078,
+    "title": "No Suspires",
+    "artist": "Pistolera",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Latin America"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4079,
+    "title": "Extranjero",
+    "artist": "Pistolera",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Latin America"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4080,
+    "title": "Cazador",
+    "artist": "Pistolera",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Latin America"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4091,
+    "title": "1864",
+    "artist": "Polka Madre",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Polka",
+      "Balkan",
+      "Europe"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4092,
+    "title": "Nina Olga Vodka",
+    "artist": "Polka Madre",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Polka",
+      "Balkan",
+      "Europe"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4093,
+    "title": "Amsterdam",
+    "artist": "Polka Madre",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Polka",
+      "Balkan",
+      "Europe"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4094,
+    "title": "Vida Propia",
+    "artist": "Polka Madre",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Polka",
+      "Balkan",
+      "Europe"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4095,
+    "title": "Funeral Brahms",
+    "artist": "Polka Madre",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Polka",
+      "Balkan",
+      "Europe"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4096,
+    "title": "La Fin Du Monde",
+    "artist": "Polka Madre",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Polka",
+      "Balkan",
+      "Europe"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4097,
+    "title": "Clammy Hands",
+    "artist": "Polka Madre",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Polka",
+      "Balkan",
+      "Europe"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4098,
+    "title": "Russo Trap",
+    "artist": "Polka Madre",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Polka",
+      "Balkan",
+      "Europe"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4099,
+    "title": "Stalin's Head",
+    "artist": "Polka Madre",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Polka",
+      "Balkan",
+      "Europe"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4100,
+    "title": "Gitanas Mojadas",
+    "artist": "Polka Madre",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Polka",
+      "Balkan",
+      "Europe"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4101,
+    "title": "Karjalainen Tanssi",
+    "artist": "Polka Madre",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Polka",
+      "Balkan",
+      "Europe"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4102,
+    "title": "Herasinkuoleena",
+    "artist": "Polka Madre",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Polka",
+      "Balkan",
+      "Europe"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4103,
+    "title": "Circo Del Siglo",
+    "artist": "Polka Madre",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Polka",
+      "Balkan",
+      "Europe"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4108,
+    "title": "New Wave Hippies",
+    "artist": "Psychedelic Horseshit",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4232,
+    "title": "Bowmazan Ya Mahaba  Bi Kidude song ",
+    "artist": "The Sounds of Taraab",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "African",
+      "Middle East"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4233,
+    "title": "Interview",
+    "artist": "The Sounds of Taraab",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "African",
+      "Middle East"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4234,
+    "title": "Mapenzi Matamu",
+    "artist": "The Sounds of Taraab",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "African",
+      "Middle East"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4235,
+    "title": "Kanilemaza  Ikhwani Safaa",
+    "artist": "The Sounds of Taraab",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "African",
+      "Middle East"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4236,
+    "title": "Enyi Wana Damu  Sharmila and Black Star Orchestra",
+    "artist": "The Sounds of Taraab",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "African",
+      "Middle East"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4239,
+    "title": "Shishituki",
+    "artist": "The Sounds of Taraab",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "African",
+      "Middle East"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4450,
+    "title": "Adventures of Castle One",
+    "artist": "Twi the Humble Feather",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4507,
+    "title": "Mon Amant de St. Jean",
+    "artist": "Yan Yalego",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "French"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4508,
+    "title": "Five Foot Two",
+    "artist": "Yan Yalego",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "French"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4509,
+    "title": "Haricots",
+    "artist": "Yan Yalego",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "French"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4510,
+    "title": "no title",
+    "artist": "Yan Yalego",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "French"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4511,
+    "title": "Petit 'n Mwen",
+    "artist": "Yan Yalego",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "French"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4519,
+    "title": "Golden",
+    "artist": "High Places",
+    "genre": "Electronic",
+    "genre_names": [
+      "Electronic"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4520,
+    "title": "From Stardust to Sentience",
+    "artist": "High Places",
+    "genre": "Electronic",
+    "genre_names": [
+      "Electronic"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4521,
+    "title": "Namer",
+    "artist": "High Places",
+    "genre": "Electronic",
+    "genre_names": [
+      "Electronic"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4522,
+    "title": "Oceanus",
+    "artist": "High Places",
+    "genre": "Electronic",
+    "genre_names": [
+      "Electronic"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4682,
+    "title": "Asylum (Permanent Underclass)",
+    "artist": "D\u00e4lek",
+    "genre": "Hip-Hop",
+    "genre_names": [
+      "Hip-Hop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4684,
+    "title": "Eyes to Form Shadows",
+    "artist": "D\u00e4lek",
+    "genre": "Hip-Hop",
+    "genre_names": [
+      "Hip-Hop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4685,
+    "title": "Ever Somber",
+    "artist": "D\u00e4lek",
+    "genre": "Hip-Hop",
+    "genre_names": [
+      "Hip-Hop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4688,
+    "title": "Culture for Dollars",
+    "artist": "D\u00e4lek",
+    "genre": "Hip-Hop",
+    "genre_names": [
+      "Hip-Hop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4777,
+    "title": "Firecracker",
+    "artist": "Half Japanese",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4778,
+    "title": "Too Much Fun",
+    "artist": "Half Japanese",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4779,
+    "title": "Secret Admirer",
+    "artist": "Half Japanese",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4780,
+    "title": "Too Much Adrenaline",
+    "artist": "Half Japanese",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4781,
+    "title": "No Big Deal",
+    "artist": "Half Japanese",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4782,
+    "title": "Thing With a Hook",
+    "artist": "Half Japanese",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4784,
+    "title": "Rosemary's Baby",
+    "artist": "Half Japanese",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4785,
+    "title": "I Know How It Feels...Bad",
+    "artist": "Half Japanese",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4786,
+    "title": "1,000,000 Kisses",
+    "artist": "Half Japanese",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4787,
+    "title": "Nicole Told Me",
+    "artist": "Half Japanese",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4788,
+    "title": "Fire To Burn",
+    "artist": "Half Japanese",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4799,
+    "title": "I've Got a Love",
+    "artist": "Harvey Milk",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4835,
+    "title": "Steak",
+    "artist": "Peelander-Z",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4836,
+    "title": "Panda Punk Tongue",
+    "artist": "Peelander-Z",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4838,
+    "title": "Punk Rock",
+    "artist": "Peelander-Z",
+    "genre": "Rock",
+    "genre_names": [
+      "Rock"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4846,
+    "title": "Bistoon",
+    "artist": "Mamak Khadem",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Middle East"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4848,
+    "title": "(introduction)",
+    "artist": "Mamak Khadem",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Middle East"
+    ],
+    "tags": []
+  },
+  {
+    "id": 4849,
+    "title": "Avareh",
+    "artist": "Mamak Khadem",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Middle East"
+    ],
+    "tags": []
+  },
+  {
+    "id": 5006,
+    "title": "So Long, Silver Lining",
+    "artist": "New Bomb Turks",
+    "genre": "Rock",
+    "genre_names": [
+      "Punk",
+      "Rock",
+      "Garage"
+    ],
+    "tags": []
+  },
+  {
+    "id": 5156,
+    "title": "Circles",
+    "artist": "Peter Biedermann",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 5157,
+    "title": "Copenhagen",
+    "artist": "Peter Biedermann",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 5158,
+    "title": "Running",
+    "artist": "Peter Biedermann",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 5159,
+    "title": "Christiania",
+    "artist": "Peter Biedermann",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 5169,
+    "title": "The Uncommon Man",
+    "artist": "Peter Biedermann",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 5170,
+    "title": "Labyrinth",
+    "artist": "Peter Biedermann",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 5171,
+    "title": "Cover Up",
+    "artist": "Peter Biedermann",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 5191,
+    "title": "Say What You Feel",
+    "artist": "caUSE co-MOTION",
+    "genre": "Pop",
+    "genre_names": [
+      "Pop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 5264,
+    "title": "Classical Homicide",
+    "artist": "D\u00e4lek",
+    "genre": "Hip-Hop",
+    "genre_names": [
+      "Hip-Hop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 5268,
+    "title": "3 Rocks Blessed",
+    "artist": "D\u00e4lek",
+    "genre": "Hip-Hop",
+    "genre_names": [
+      "Hip-Hop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 5376,
+    "title": "The Clouds",
+    "artist": "Mary Halvorson and Jessica Pavone",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 5381,
+    "title": "Hartford",
+    "artist": "Mary Halvorson and Jessica Pavone",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 5521,
+    "title": "alone now",
+    "artist": "The Apartment",
+    "genre": "Experimental",
+    "genre_names": [
+      "Sound Collage",
+      "Experimental"
+    ],
+    "tags": []
+  },
+  {
+    "id": 5879,
+    "title": "Rock and Tree",
+    "artist": "Bob Wiseman",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk",
+      "Freak-Folk"
+    ],
+    "tags": [
+      "in her dream"
+    ]
+  },
+  {
+    "id": 5936,
+    "title": "Traveling",
+    "artist": "Susanna",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk",
+      "Singer-Songwriter"
+    ],
+    "tags": []
+  },
+  {
+    "id": 5940,
+    "title": "When It Rains",
+    "artist": "Howard Fishman",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk",
+      "Singer-Songwriter"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6329,
+    "title": "Krivo Kopanitsa Horo",
+    "artist": "Sheqer",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6330,
+    "title": "Nie Zama Nie Sema",
+    "artist": "The Sounds of Taraab",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "African"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6331,
+    "title": "track 1",
+    "artist": "Kavala Brass Band",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan",
+      "Europe"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6332,
+    "title": "Taso's Hasapiko",
+    "artist": "Raya Brass Band",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6333,
+    "title": "track 01",
+    "artist": "Scott Wilson & Efendi",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan",
+      "Middle East"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6342,
+    "title": "Doulab Nahawand Murassaa",
+    "artist": "Zikrayat",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Middle East"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6354,
+    "title": "Daka Koz",
+    "artist": "The Sounds of Taraab",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "African"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6357,
+    "title": "Zaharoula",
+    "artist": "Raya Brass Band",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6358,
+    "title": "track 2",
+    "artist": "Kavala Brass Band",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan",
+      "Europe"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6360,
+    "title": "Sabah Sabah Seyredelim Yaliyi",
+    "artist": "Orkestra Keyif",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan",
+      "Middle East"
+    ],
+    "tags": [
+      "il"
+    ]
+  },
+  {
+    "id": 6363,
+    "title": "track 02",
+    "artist": "Scott Wilson & Efendi",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan",
+      "Middle East"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6366,
+    "title": "Taheya",
+    "artist": "Zikrayat",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Middle East"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6367,
+    "title": "Manowe, Mahaba Wa Takanini, Mapenz",
+    "artist": "The Sounds of Taraab",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "African"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6368,
+    "title": "track 3",
+    "artist": "Kavala Brass Band",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan",
+      "Europe"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6370,
+    "title": "Leventikos",
+    "artist": "Raya Brass Band",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6372,
+    "title": "track 03",
+    "artist": "Scott Wilson & Efendi",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan",
+      "Middle East"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6373,
+    "title": "Semseyemin Ucu Kare with Oud Solo by Haig Manoukian",
+    "artist": "Orkestra Keyif",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan",
+      "Middle East"
+    ],
+    "tags": [
+      "il"
+    ]
+  },
+  {
+    "id": 6376,
+    "title": "track 4",
+    "artist": "Kavala Brass Band",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan",
+      "Europe"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6379,
+    "title": "Matamu Choz",
+    "artist": "The Sounds of Taraab",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "African"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6380,
+    "title": "track 04",
+    "artist": "Scott Wilson & Efendi",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan",
+      "Middle East"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6381,
+    "title": "Kateva Lenko",
+    "artist": "Raya Brass Band",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6382,
+    "title": "Svadbeni Cocek",
+    "artist": "Sheqer",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6383,
+    "title": "Telegrafin Tellerine",
+    "artist": "Orkestra Keyif",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan",
+      "Middle East"
+    ],
+    "tags": [
+      "il"
+    ]
+  },
+  {
+    "id": 6385,
+    "title": "track 05",
+    "artist": "Scott Wilson & Efendi",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan",
+      "Middle East"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6387,
+    "title": "Karsilamas Hrysodaktili",
+    "artist": "Raya Brass Band",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6389,
+    "title": "Kwala Ulala Huez",
+    "artist": "The Sounds of Taraab",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "African"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6390,
+    "title": "track 5",
+    "artist": "Kavala Brass Band",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan",
+      "Europe"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6393,
+    "title": "Rumor",
+    "artist": "Zikrayat",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Middle East"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6394,
+    "title": "Bufchansko",
+    "artist": "Sheqer",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6396,
+    "title": "Sarki",
+    "artist": "Sheqer",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Balkan"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6406,
+    "title": "The Hungry Stones",
+    "artist": "MV + EE",
+    "genre": "Folk",
+    "genre_names": [
+      "Psych-Folk",
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6407,
+    "title": "Huna Cosm",
+    "artist": "MV + EE",
+    "genre": "Folk",
+    "genre_names": [
+      "Psych-Folk",
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6439,
+    "title": "Crossover",
+    "artist": "EPMD",
+    "genre": "Hip-Hop",
+    "genre_names": [
+      "Hip-Hop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6440,
+    "title": "Rampage",
+    "artist": "EPMD",
+    "genre": "Hip-Hop",
+    "genre_names": [
+      "Hip-Hop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6442,
+    "title": "Richter Scale",
+    "artist": "EPMD",
+    "genre": "Hip-Hop",
+    "genre_names": [
+      "Hip-Hop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6443,
+    "title": "Music",
+    "artist": "EPMD",
+    "genre": "Hip-Hop",
+    "genre_names": [
+      "Hip-Hop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6448,
+    "title": "Please Listen To My Demo",
+    "artist": "EPMD",
+    "genre": "Hip-Hop",
+    "genre_names": [
+      "Hip-Hop"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6459,
+    "title": "Ma Alli Wu Ultillu",
+    "artist": "Zikrayat",
+    "genre": "International",
+    "genre_names": [
+      "International",
+      "Middle East"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6461,
+    "title": "Florida Rain",
+    "artist": "Matt Bauer",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  },
+  {
+    "id": 6463,
+    "title": "Are You the One?",
+    "artist": "Matt Bauer",
+    "genre": "Folk",
+    "genre_names": [
+      "Folk"
+    ],
+    "tags": []
+  }
+]

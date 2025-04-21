@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse
 import shutil
 import os
 import uuid
-from services.process_audio import process_audio
+from services.audio_processor import process_audio
 
 router = APIRouter()
 UPLOAD_DIR = "uploads"
