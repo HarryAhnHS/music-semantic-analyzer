@@ -6,6 +6,7 @@ import laion_clap
 import os
 import faiss
 import json
+from typing import Optional
 
 def int16_to_float32(x):
     return (x / 32767.0).astype(np.float32)
@@ -29,8 +30,9 @@ class CLAPWrapper:
         print("[CLAP init] Checkpoint loaded.")
 
         self.faiss_path = faiss_path
+        self.metadata_path = metadata_path
         self.index = None
-        self.metadata = None
+        self.metadata = []
 
         if faiss_path:
             os.makedirs(os.path.dirname(faiss_path), exist_ok=True)
@@ -41,10 +43,17 @@ class CLAPWrapper:
                 print(f"[faiss] Creating new FAISS index at {faiss_path}")
                 self.index = faiss.IndexFlatL2(512)
 
-        if metadata_path and os.path.exists(metadata_path):
-            with open(metadata_path, "r") as f:
-                self.metadata = json.load(f)
-            print(f"[meta] Loaded metadata with {len(self.metadata)} entries.")
+        if metadata_path:
+            if os.path.exists(metadata_path):
+                try:
+                    with open(metadata_path, "r") as f:
+                        content = f.read().strip()
+                        self.metadata = json.loads(content) if content else []
+                except Exception as e:
+                    print(f"[meta] Failed to load metadata: {e}")
+                    self.metadata = []
+            else:
+                self.metadata = []
 
     def get_embedding(self, file_path: str) -> list[float]:
         audio_data, _ = librosa.load(file_path, sr=48000)
@@ -60,22 +69,22 @@ class CLAPWrapper:
             embedding = self.model.get_audio_embedding_from_data(audio_tensor, use_tensor=True)
 
         return embedding.squeeze().cpu().numpy().tolist()
-    
-    def add_embedding_to_index(self, embedding: list[float]):
-        """Adds a given embedding to the FAISS index."""
-        if self.index:
-            self.index.add(np.array([embedding], dtype='float32'))
-        return embedding
 
-    def process_and_index(self, file_path: str):
-        emb = self.get_embedding(file_path)
+    def add_embedding_to_index(self, embedding: list[float], metadata: Optional[dict] = None):
         if self.index:
-            self.index.add(np.array([emb], dtype='float32'))
-        return emb
+            self.index.add(np.array([embedding], dtype="float32"))
+        if metadata is not None:
+            self.metadata.append(metadata)
+        else:
+            self.metadata.append({})
+        return embedding
 
     def save_index(self):
         if self.index and self.faiss_path:
             faiss.write_index(self.index, str(self.faiss_path))
+        if self.metadata_path:
+            with open(self.metadata_path, "w") as f:
+                json.dump(self.metadata, f, indent=2)
 
     def query_neighbors(self, embedding: list[float], k: int = 3) -> list[tuple[int, float]]:
         if self.index is None:
@@ -88,4 +97,4 @@ class CLAPWrapper:
         if self.metadata is None:
             raise ValueError("No metadata loaded. Pass `metadata_path` to the constructor.")
         neighbor_info = self.query_neighbors(embedding, k)
-        return [self.metadata[i] for i, _ in neighbor_info]
+        return [self.metadata[i] for i, _ in neighbor_info if i < len(self.metadata)]

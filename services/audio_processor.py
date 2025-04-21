@@ -1,8 +1,10 @@
 from services.llm_tagger import generate_tags_and_summary
 from services.metadata_extractor import extract_metadata
-from configs.index_configs import TAGGING_INDEX, TAGGING_META, INTERNAL_INDEX, INTERNAL_META
+from configs.index_configs import TAGGING_INDEX, TAGGING_META, INTERNAL_INDEX, INTERNAL_META, INTERNAL_TEXT_INDEX, INTERNAL_TEXT_META
 from services.stem_separator import separate_stems, classify_track_type
 from services.clap_manager import get_clap
+from services.text_embedder import TextEmbeddingIndex
+
 
 def process_audio(preview_path: str, full_path: str):
     # 1. Separate stems
@@ -30,8 +32,10 @@ def process_audio(preview_path: str, full_path: str):
     for stem_name, stem_path in stems.items():
         stem_embedding = tagging_clap.get_embedding(stem_path)
         neighbors = tagging_clap.query_neighbors_with_tagging_metadata(stem_embedding, k=3)
+        stem_metadata = extract_metadata(stem_path)
         stem_meta = {
             **metadata,
+            "stem_chroma_vector": stem_metadata.get("chroma_vector", []),
             "stem_type": stem_name,
             "track_type": track_type
         }
@@ -39,17 +43,26 @@ def process_audio(preview_path: str, full_path: str):
         stem_tags[stem_name] = t
         stem_summaries[stem_name] = s
 
-    # 7. Add embedding to internal index - TODO:need to store metadata as well
-    # internal_clap = get_clap(INTERNAL_INDEX, INTERNAL_META)
-    # internal_clap.add_embedding_to_index(embedding)
-    # internal_clap.save_index()
-
-    return {
-        # "embedding": [float(x) for x in embedding],
+    # 7. Add audio embedding to internal index
+    internal_clap = get_clap(INTERNAL_INDEX, INTERNAL_META)
+    internal_metadata_entry = {
         "metadata": metadata,
-        # "neighbors": top_neighbors,
+        "neighbors": top_neighbors,
         "tags": tags,
         "summary": summary,
         "stem_tags": stem_tags,
         "stem_summaries": stem_summaries
     }
+    print("internal_metadata_entry", internal_metadata_entry)
+    internal_clap.add_embedding_to_index(embedding, internal_metadata_entry)
+    internal_clap.save_index()
+
+    # 8. Generate text embedding and encode to internal text index
+    text_index = TextEmbeddingIndex(INTERNAL_TEXT_INDEX, INTERNAL_TEXT_META)
+    text_blob = text_index.generate_text_blob(internal_metadata_entry)
+    internal_metadata_entry["text_embedding"] = text_blob
+    print("text_blob", text_blob)
+    text_index.add_entry(text_blob, internal_metadata_entry)
+    text_index.save()
+
+    return internal_metadata_entry

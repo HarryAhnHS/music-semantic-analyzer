@@ -11,6 +11,8 @@ TAGGING_META = BASE_DIR / "data/tagging_index/metadata/metadata.json"
 
 INTERNAL_INDEX = BASE_DIR / "data/matching_index/embeddings/internal_index.faiss"
 INTERNAL_META = BASE_DIR / "data/matching_index/metadata/internal_metadata.json"
+INTERNAL_TEXT_INDEX = BASE_DIR / "data/matching_index/embeddings/internal_text_index.faiss"
+INTERNAL_TEXT_META = BASE_DIR / "data/matching_index/metadata/internal_text_metadata.json"
 
 UPLOAD_DIR = BASE_DIR / "uploads/full"
 UPLOADS_PREVIEW_DIR = BASE_DIR / "uploads/previews"

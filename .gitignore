@@ -35,10 +35,13 @@ upload_stems/htdemucs/*/*
 checkpoints/*.pt
 
 # data/tagging_index/embeddings
-data/tagging_index/embeddings/* 
+data/tagging_index/embeddings/*
+data/tagging_index/metadata/*
 data/tagging_index/fma/audio/*
 data/tagging_index/fma/csv/*
 data/tagging_index/fma/metadata/*
+data/matching_index/embeddings/* 
+data/matching_index/metadata/*
 
 # Environment variables
 .env
