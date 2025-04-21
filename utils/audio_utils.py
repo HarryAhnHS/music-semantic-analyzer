@@ -1,4 +1,5 @@
 import os
+from pydub import AudioSegment
 
 # utils.py or inline in your script
 def get_audio_path(audio_dir, track_id):
@@ -10,3 +11,19 @@ def get_audio_path(audio_dir, track_id):
     """
     tid = int(track_id)
     return os.path.join(audio_dir, '{:03d}'.format(tid // 1000), '{:06d}.mp3'.format(tid))
+
+
+# extract a 30 second preview from the center of the track
+def extract_preview_segment(full_path: str, output_path: str, segment_duration_sec: int = 30):
+    audio = AudioSegment.from_file(full_path)
+    duration_ms = len(audio)
+    segment_ms = segment_duration_sec * 1000
+
+    # Center crop if possible, else take from start
+    if duration_ms > segment_ms:
+        start = (duration_ms - segment_ms) // 2
+    else:
+        start = 0
+
+    preview = audio[start:start + segment_ms]
+    preview.export(output_path, format="mp3")

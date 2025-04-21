@@ -24,7 +24,9 @@ wheels/
 .venv/*
 
 # user uploads
-uploads/*
+uploads/full/*
+uploads/previews/*
+uploads/stems/*
 
 # demucs
 upload_stems/htdemucs/*/*
