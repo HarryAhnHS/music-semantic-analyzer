@@ -4,19 +4,19 @@ from configs.index_configs import TAGGING_INDEX, TAGGING_META, INTERNAL_INDEX, I
 from services.stem_separator import separate_stems, classify_track_type
 from services.clap_manager import get_clap
 
-def process_audio(file_path: str):
+def process_audio(preview_path: str, full_path: str):
     # 1. Separate stems
-    stems = separate_stems(file_path)  # returns dict: { 'vocals': path, 'drums': path, ... }
+    stems = separate_stems(preview_path)  # returns dict: { 'vocals': path, 'drums': path, ... }
 
     # 2. Heuristically classify track type
     track_type = classify_track_type(stems) # return string: "song", "instrumental", "vocal"
 
     # 3. Get main embedding (original audio)
     tagging_clap = get_clap(TAGGING_INDEX, TAGGING_META)
-    embedding = tagging_clap.get_embedding(file_path)
+    embedding = tagging_clap.get_embedding(preview_path)
 
     # 4. Extract audio metadata
-    metadata = extract_metadata(file_path)
+    metadata = extract_metadata(full_path)
     metadata["track_type"] = track_type
 
     # 5. Query tagging index for semantic neighbors (existing labeled tracks)

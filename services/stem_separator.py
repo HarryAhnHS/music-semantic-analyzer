@@ -39,12 +39,32 @@ def separate_stems(audio_path: str, model: str = "htdemucs", cache_dir: str = SE
 
 
 def classify_track_type(stems: dict) -> str:
-    energy = {stem: np.mean(librosa.feature.rms(y=librosa.load(path, sr=None)[0])) for stem, path in stems.items()}
+    import librosa
+    import numpy as np
+
+    energy = {
+        stem: np.mean(librosa.feature.rms(y=librosa.load(path, sr=None)[0]))
+        for stem, path in stems.items()
+    }
+
+    print("energy", energy)
+
     vocal_energy = energy.get("vocals", 0)
-    instrumental_energy = sum(energy.get(s, 0) for s in ["drums", "bass", "other"])
-    
-    if vocal_energy > instrumental_energy * 2:
+    instrumental_energy = sum(
+        energy.get(s, 0) for s in ["drums", "bass", "other"]
+    )
+
+    # Threshold to ignore residual noise/silence
+    min_energy_threshold = 1e-4
+
+    has_vocals = vocal_energy > min_energy_threshold
+    has_instrumentals = instrumental_energy > min_energy_threshold
+
+    if has_vocals and has_instrumentals:
+        return "song"
+    elif has_vocals and not has_instrumentals:
         return "acapella"
-    elif instrumental_energy > vocal_energy * 2:
+    elif not has_vocals and has_instrumentals:
         return "instrumental"
-    return "song"
+
+    return "unknown"  # fallback for silent or broken files
