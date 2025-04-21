@@ -2,11 +2,11 @@ import torch
 torch.set_num_threads(1)
 import librosa
 import numpy as np
-import laion_clap
 import os
 import faiss
-import json
+import ujson as json
 from typing import Optional
+from services.clap_singleton import CLAP_MODEL, CLAP_DEVICE
 
 def int16_to_float32(x):
     return (x / 32767.0).astype(np.float32)
@@ -16,29 +16,31 @@ def float32_to_int16(x):
     return (x * 32767.).astype(np.int16)
 
 class CLAPWrapper:
-    def __init__(self, faiss_path=None, metadata_path=None):
+    def __init__(self, faiss_path=None, metadata_path=None, read_only: bool = False):
         print("[CLAP init] Selecting device...")
-        self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        self.device = CLAP_DEVICE
         print(f"[CLAP init] Device set to {self.device}")
-
-        self.model = laion_clap.CLAP_Module(
-            enable_fusion=False,
-            amodel='HTSAT-base'
-        )
-        print("[CLAP init] Model instantiated, loading checkpoint...")
-        self.model.load_ckpt("checkpoints/music_speech_audioset_epoch_15_esc_89.98.pt")
+        self.model = CLAP_MODEL
         print("[CLAP init] Checkpoint loaded.")
 
         self.faiss_path = faiss_path
         self.metadata_path = metadata_path
         self.index = None
         self.metadata = []
+        self.read_only = read_only
 
         if faiss_path:
             os.makedirs(os.path.dirname(faiss_path), exist_ok=True)
             if os.path.exists(faiss_path):
-                print(f"[faiss] Loading existing index from {faiss_path}")
-                self.index = faiss.read_index(str(faiss_path))
+                if self.read_only:
+                    print(f"[faiss] Loading mmap read-only index from {faiss_path}")
+                    self.index = faiss.read_index(
+                        str(faiss_path),
+                        faiss.IO_FLAG_MMAP | faiss.IO_FLAG_READ_ONLY
+                    )
+                else:
+                    print(f"[faiss] Loading editable index from {faiss_path}")
+                    self.index = faiss.read_index(str(faiss_path))
             else:
                 print(f"[faiss] Creating new FAISS index at {faiss_path}")
                 self.index = faiss.IndexFlatL2(512)
@@ -71,6 +73,9 @@ class CLAPWrapper:
         return embedding.squeeze().cpu().numpy().tolist()
 
     def add_embedding_to_index(self, embedding: list[float], metadata: Optional[dict] = None):
+        if self.read_only:
+            raise RuntimeError("Cannot add to read-only index.")
+    
         if self.index:
             self.index.add(np.array([embedding], dtype="float32"))
         if metadata is not None:
@@ -80,6 +85,9 @@ class CLAPWrapper:
         return embedding
 
     def save_index(self):
+        if self.read_only:
+            raise RuntimeError("Cannot add to read-only index.")
+        
         if self.index and self.faiss_path:
             faiss.write_index(self.index, str(self.faiss_path))
         if self.metadata_path:

@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 
 from utils.audio_utils import get_audio_path
 from configs.index_configs import TAGGING_AUDIO_DIR, TRACKS_PATH, GENRE_MAP_PATH, TAGGING_INDEX, TAGGING_META
-from services.clap_manager import get_clap
+from services.clap_wrapper import CLAPWrapper
 
 def clean_html(text, max_len=500):
     """Strip HTML and truncate long strings."""
@@ -29,7 +29,7 @@ def load_genre_map(genre_csv_path):
 
 def main():
     print("🔄 Initializing CLAP model and loading metadata...")
-    clap = get_clap(TAGGING_INDEX, TAGGING_META)
+    clap = CLAPWrapper(TAGGING_INDEX, TAGGING_META)
 
     metadata = pd.read_csv(TRACKS_PATH, index_col=0, header=[0, 1])
     genre_map = load_genre_map(GENRE_MAP_PATH)

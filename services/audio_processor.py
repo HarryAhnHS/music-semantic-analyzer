@@ -3,6 +3,7 @@ from services.metadata_extractor import extract_metadata
 from configs.index_configs import TAGGING_INDEX, TAGGING_META, INTERNAL_INDEX, INTERNAL_META, INTERNAL_TEXT_INDEX, INTERNAL_TEXT_META
 from services.stem_separator import separate_stems, classify_track_type
 from services.clap_manager import get_clap
+from services.clap_wrapper import CLAPWrapper
 from services.text_embedder import TextEmbeddingIndex
 
 
@@ -14,7 +15,7 @@ def process_audio(preview_path: str, full_path: str):
     track_type = classify_track_type(stems) # return string: "song", "instrumental", "vocal"
 
     # 3. Get main embedding (original audio)
-    tagging_clap = get_clap(TAGGING_INDEX, TAGGING_META)
+    tagging_clap = CLAPWrapper(TAGGING_INDEX, TAGGING_META, read_only=True)
     embedding = tagging_clap.get_embedding(preview_path)
 
     # 4. Extract audio metadata
@@ -44,7 +45,7 @@ def process_audio(preview_path: str, full_path: str):
         stem_summaries[stem_name] = s
 
     # 7. Add audio embedding to internal index
-    internal_clap = get_clap(INTERNAL_INDEX, INTERNAL_META)
+    internal_clap = CLAPWrapper(INTERNAL_INDEX, INTERNAL_META, read_only=False)
     internal_metadata_entry = {
         "metadata": metadata,
         "neighbors": top_neighbors,
