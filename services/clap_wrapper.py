@@ -16,18 +16,31 @@ def float32_to_int16(x):
     return (x * 32767.).astype(np.int16)
 
 class CLAPWrapper:
-    def __init__(self, faiss_path=None, metadata_path=None, read_only: bool = False):
+    def __init__(self, app=None, variant: Optional[str] = None, faiss_path=None, metadata_path=None, read_only: bool = False):
         print("[CLAP init] Selecting device...")
         self.device = CLAP_DEVICE
         print(f"[CLAP init] Device set to {self.device}")
         self.model = CLAP_MODEL
         print("[CLAP init] Checkpoint loaded.")
 
-        self.faiss_path = faiss_path
-        self.metadata_path = metadata_path
         self.index = None
         self.metadata = []
         self.read_only = read_only
+
+        # ✅ Use app.state if available AND variant is explicitly passed
+        if variant and app is not None and hasattr(app.state, "faiss_variants"):
+            variants = app.state.faiss_variants
+            if variant in variants:
+                print(f"[CLAP] Using preloaded variant '{variant}' from app.state")
+                self.index = variants[variant]["index"]
+                self.metadata = variants[variant]["metadata"]
+                return
+            else:
+                print(f"[CLAP] Variant '{variant}' not found in app.state.faiss_variants, falling back to file paths")
+
+        # ⛳ Fallback: traditional file-based loading
+        self.faiss_path = faiss_path
+        self.metadata_path = metadata_path
 
         if faiss_path:
             os.makedirs(os.path.dirname(faiss_path), exist_ok=True)

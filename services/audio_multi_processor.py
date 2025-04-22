@@ -7,11 +7,16 @@ from configs.index_configs import (
     TTMR_INDEX, TTMR_META, TTMR_ARTIST_INDEX, TTMR_ARTIST_META
 )
 from services.stem_separator import separate_stems, classify_track_type
-from services.clap_manager import get_clap
+# from services.clap_manager import get_clap
 from services.text_embedder import TextEmbeddingIndex
-from services.ttmrpp_manager import get_ttmr
+# from services.ttmrpp_manager import get_ttmr      
+from services.clap_wrapper import CLAPWrapper
+from services.ttmrpp_wrapper import TTMRPPWrapper
 from utils.audio_utils import encode_audio_base64
-def process_audio_hybrid(preview_path: str, full_path: str):
+from fastapi import Request
+
+
+def process_audio_hybrid(request: Request, preview_path: str, full_path: str):
     # 1. Separate stems
     stems = separate_stems(preview_path)
     encoded_stems = {
@@ -23,15 +28,15 @@ def process_audio_hybrid(preview_path: str, full_path: str):
     track_info = classify_track_type(stems)
 
     # 3. Get CLAP embedding
-    tagging_clap = get_clap(TAGGING_INDEX, TAGGING_META, read_only=True)
+    tagging_clap = CLAPWrapper(app=request.app, variant="tagging_clap", read_only=True)
     clap_embedding = tagging_clap.get_embedding(preview_path)
 
     # 4. Get TTMR embedding and neighbors
-    ttmr_embedder = get_ttmr(TTMR_INDEX, TTMR_META)
+    ttmr_embedder = TTMRPPWrapper(app=request.app, variant="tagging_ttmr", read_only=True)
     ttmr_embedding = ttmr_embedder.get_audio_embedding(preview_path)
     overall_ttmr_neighbors = ttmr_embedder.query_neighbors_with_metadata(ttmr_embedding, k=3)
     # 4. Get TTMR artist embedding and neighbors
-    ttmr_artist_embedder = get_ttmr(TTMR_ARTIST_INDEX, TTMR_ARTIST_META)
+    ttmr_artist_embedder = TTMRPPWrapper(app=request.app, variant="tagging_ttmr_artist", read_only=True)
     overall_ttmr_artist_neighbors = ttmr_artist_embedder.query_neighbors_with_metadata(ttmr_embedding, k=3)
 
     # 5. Extract metadata
@@ -48,7 +53,7 @@ def process_audio_hybrid(preview_path: str, full_path: str):
     tags, summary = generate_tags_and_summary_hybrid(overall_metadata, overall_hybrid_neighbors, overall_ttmr_artist_neighbors)
 
     # 8. Stem-level tagging
-    stem_tags = {}
+    stem_tags = {}  
     stem_summaries = {}
 
     for stem_name, stem_path in stems.items():
@@ -77,7 +82,7 @@ def process_audio_hybrid(preview_path: str, full_path: str):
         stem_summaries[stem_name] = s
 
     # 9. Add to CLAP index
-    internal_clap = get_clap(INTERNAL_INDEX, INTERNAL_META, read_only=False)
+    # internal_clap = CLAPWrapper(faiss_path=INTERNAL_INDEX, metadata_path=INTERNAL_META)
     internal_metadata_entry = {
         "metadata": overall_metadata,
         "clap_neighbors": overall_clap_neighbors,
@@ -90,15 +95,15 @@ def process_audio_hybrid(preview_path: str, full_path: str):
         "stems": encoded_stems
     }
 
-    internal_clap.add_embedding_to_index(clap_embedding, internal_metadata_entry)
-    internal_clap.save_index()
+    # internal_clap.add_embedding_to_index(clap_embedding, internal_metadata_entry)
+    # internal_clap.save_index()
 
     # 10. Add to text search index
-    text_index = TextEmbeddingIndex(INTERNAL_TEXT_INDEX, INTERNAL_TEXT_META)
-    text_blob = text_index.generate_text_blob(internal_metadata_entry)
-    internal_metadata_entry["text_embedding"] = text_blob
-    print("text_blob", text_blob)
-    text_index.add_entry(text_blob, internal_metadata_entry)
-    text_index.save()
+    # text_index = TextEmbeddingIndex(faiss_path=INTERNAL_TEXT_INDEX, metadata_path=INTERNAL_TEXT_META)
+    # text_blob = text_index.generate_text_blob(internal_metadata_entry)
+    # internal_metadata_entry["text_embedding"] = text_blob
+    # print("text_blob", text_blob)
+    # text_index.add_entry(text_blob, internal_metadata_entry)
+    # text_index.save()
 
     return internal_metadata_entry

@@ -5,13 +5,13 @@ import os, shutil, uuid, tempfile
 from services.audio_multi_processor import process_audio_hybrid
 from configs.index_configs import UPLOAD_DIR, UPLOADS_PREVIEW_DIR
 from utils.audio_utils import extract_preview_segment
-
+from fastapi import Request 
 from services.stem_separator import classify_track_type
 
 router = APIRouter()
 
 @router.post("/analyze/hybrid")
-async def analyze_song_hybrid(file: UploadFile = File(...)):
+async def analyze_song_hybrid(request: Request, file: UploadFile = File(...)):
     if file.content_type not in ["audio/mpeg", "audio/wav", "audio/x-wav"]:
         return JSONResponse(status_code=400, content={"error": "Only MP3 or WAV files are supported."})
 
@@ -32,7 +32,7 @@ async def analyze_song_hybrid(file: UploadFile = File(...)):
 
     try:
         extract_preview_segment(file_path, preview_path, segment_duration_sec=20)
-        result = process_audio_hybrid(preview_path, file_path)
+        result = process_audio_hybrid(request, preview_path, file_path)
 
         return {
             "status": "analyzed",

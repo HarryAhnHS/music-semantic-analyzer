@@ -6,25 +6,25 @@ from typing import Optional, List, Dict
 from sentence_transformers import SentenceTransformer
 
 class TextEmbeddingIndex:
-    def __init__(self, index_path: str, metadata_path: str):
-        self.index_path = str(index_path)
+    def __init__(self, faiss_path: str, metadata_path: str):
+        self.faiss_path = str(faiss_path)
         self.metadata_path = str(metadata_path)
         
 
         # Ensure parent directories exist
-        os.makedirs(os.path.dirname(index_path), exist_ok=True)
-        os.makedirs(os.path.dirname(metadata_path), exist_ok=True)
+        os.makedirs(os.path.dirname(self.faiss_path), exist_ok=True)
+        os.makedirs(os.path.dirname(self.metadata_path), exist_ok=True)
 
         # Initialize or load FAISS index
-        if os.path.exists(self.index_path) and os.path.getsize(self.index_path) > 0:
-            self.index = faiss.read_index(self.index_path)
-            print(f"[FAISS] ✅ Loaded text index from {self.index_path}")
+        if os.path.exists(self.faiss_path) and os.path.getsize(self.faiss_path) > 0:
+            self.index = faiss.read_index(self.faiss_path)
+            print(f"[FAISS] ✅ Loaded text index from {self.faiss_path}")
         else:
             self.index = faiss.IndexFlatL2(384)  # all-MiniLM-L6-v2 embedding size
-            print(f"[FAISS] 🆕 Created new text index at {self.index_path}")
+            print(f"[FAISS] 🆕 Created new text index at {self.faiss_path}")
 
         # Initialize or load metadata
-        if os.path.exists(metadata_path):
+        if os.path.exists(self.metadata_path):
             try:
                 with open(self.metadata_path, "r") as f:
                     content = f.read().strip()
@@ -49,7 +49,7 @@ class TextEmbeddingIndex:
         return embedding[0].tolist()
 
     def save(self):
-        faiss.write_index(self.index, self.index_path)
+        faiss.write_index(self.index, self.faiss_path)
         with open(self.metadata_path, "w") as f:
             json.dump(self.metadata, f, indent=2)
         print(f"[SAVE] Index and metadata saved.")

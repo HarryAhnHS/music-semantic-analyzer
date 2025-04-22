@@ -23,16 +23,37 @@ N_SAMPLES = int(SR * 10)
 from pathlib import Path
 
 class TTMRPPWrapper:
-
-    def __init__(self, faiss_path = None, metadata_path = None, read_only: bool = False, model_dir: str = "models/ttmrpp", model_type: str = "best", gpu: int = 0):
+    def __init__(
+        self,
+        app=None,
+        variant: Optional[str] = None,
+        faiss_path=None,
+        metadata_path=None,
+        read_only: bool = False,
+        model_dir: str = "models/ttmrpp",
+        model_type: str = "best",
+        gpu: int = 0,
+    ):
         self.device = TTMR_DEVICE
         self.model = TTMR_MODEL
-
-        self.faiss_path = faiss_path
-        self.metadata_path = metadata_path
         self.read_only = read_only
         self.index = None
         self.metadata = []
+
+        # ✅ Check app.state if variant and app are provided
+        if variant and app is not None and hasattr(app.state, "faiss_variants"):
+            variants = app.state.faiss_variants
+            if variant in variants:
+                print(f"[TTMR] Using preloaded variant '{variant}' from app.state")
+                self.index = variants[variant]["index"]
+                self.metadata = variants[variant]["metadata"]
+                return
+            else:
+                print(f"[TTMR] Variant '{variant}' not found in app.state.faiss_variants, falling back to file paths")
+
+        # ✅ Legacy fallback: direct faiss_path + metadata_path
+        self.faiss_path = faiss_path
+        self.metadata_path = metadata_path
 
         if faiss_path:
             faiss_path = Path(faiss_path)
@@ -59,6 +80,7 @@ class TTMRPPWrapper:
                     self.metadata = []
             else:
                 self.metadata = []
+
 
     def _load_model(self, save_dir: str, model_type: str):
         os.makedirs(save_dir, exist_ok=True)
