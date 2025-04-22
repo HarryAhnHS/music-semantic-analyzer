@@ -1,11 +1,6 @@
 # services/ttmr_singleton.py
-import sys
 import os
 import torch
-TTMRPP_REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "external", "music-text-representation-pp"))
-if TTMRPP_REPO not in sys.path:
-    sys.path.append(TTMRPP_REPO)
-    print(f"[TTMR] Adding submodule to sys.path: {TTMRPP_REPO}")
 from external.music_text_representation_pp.mtrpp.utils.eval_utils import load_ttmr_pp
 
 # 🔐 Optional fallback download logic
