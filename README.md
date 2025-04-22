@@ -11,3 +11,7 @@ source .venv/bin/activate
 ↪️  Skipped existing (preloaded): 5179
 🚫 Skipped missing files: 81574
 ⚠️  Skipped invalid embeddings: 0
+
+
+## TTMR++ 
+“Clone TTMR++ under external/music-text-representation-pp before running embedding scripts.”

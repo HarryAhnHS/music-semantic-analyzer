@@ -4,7 +4,7 @@ from routes.semantic import router as semantic_router
 app = FastAPI()
 
 # Register the route
-app.include_router(semantic_router)
+app.include_router(semantic_router, prefix="/semantic")
 # app.include_router(instruments_router)
 
 if __name__ == "__main__":

@@ -1,0 +1,3 @@
+[submodule "external/music-text-representation-pp"]
+	path = external/music-text-representation-pp
+	url = https://github.com/seungheondoh/music-text-representation-pp.git

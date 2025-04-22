@@ -2,6 +2,7 @@ import os
 import json
 from together import Together
 from dotenv import load_dotenv
+import re
 
 load_dotenv()
 client = Together()
@@ -103,9 +104,34 @@ def generate_tags_and_summary(metadata: dict, neighbors: list[dict]) -> tuple[li
     content = response.choices[0].message.content
 
     try:
-        result = json.loads(content)
+        # Clean the content before parsing
+        cleaned_content = content.strip()
+        # Try to make it valid JSON if it's not already
+        if not cleaned_content.startswith('{'):
+            cleaned_content = '{' + cleaned_content
+        if not cleaned_content.endswith('}'):
+            cleaned_content = cleaned_content + '}'
+        
+        # Replace any problematic characters or whitespace
+        cleaned_content = cleaned_content.replace('\n', ' ').replace('\r', '')
+        
+        result = json.loads(cleaned_content)
         return result["tags"], result["summary"]
     except Exception as e:
         print("Failed to parse LLM output:", e)
         print("Raw content was:\n", content)
-        return ["unknown"], "Unable to generate summary."
+        
+        # Fallback parsing with regex
+        tags_match = re.search(r'"tags":\s*\[(.*?)\]', content, re.DOTALL)
+        summary_match = re.search(r'"summary":\s*"(.*?)"', content, re.DOTALL) 
+        
+        tags = []
+        if tags_match:
+            tags_str = tags_match.group(1)
+            tags = [tag.strip(' "\'') for tag in tags_str.split(',')]
+        
+        summary = "Unable to generate summary."
+        if summary_match:
+            summary = summary_match.group(1)
+        
+        return tags, summary

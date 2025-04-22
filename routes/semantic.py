@@ -11,6 +11,15 @@ from services.stem_separator import classify_track_type
 
 router = APIRouter()
 
+@router.post("/ttmrpp")
+async def ttmrpp(file: UploadFile = File(...)):
+    if file.content_type not in ["audio/mpeg", "audio/wav", "audio/x-wav"]:
+        return JSONResponse(status_code=400, content={"error": "Only MP3 or WAV files are supported."})
+
+    return {
+        "status": "ttmrpp"
+    }
+
 @router.post("/analyze")
 async def analyze_song(file: UploadFile = File(...)):
     if file.content_type not in ["audio/mpeg", "audio/wav", "audio/x-wav"]:
@@ -25,7 +34,7 @@ async def analyze_song(file: UploadFile = File(...)):
 
     # Generate a preview for analysis (e.g., 30 seconds)
     preview_path = os.path.join(UPLOADS_PREVIEW_DIR, filename)
-    extract_preview_segment(file_path, preview_path, segment_duration_sec=30)
+    extract_preview_segment(file_path, preview_path, segment_duration_sec=20)
 
     result = process_audio(preview_path, file_path)
 
