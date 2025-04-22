@@ -1,3 +1,3 @@
 #!/bin/bash
-echo "🚀 Initializing submodules..."
-git submodule update --init --recursive
+echo "🚀 Running Railway init.sh script..."
+git submodule update --init --recursive || exit 1
