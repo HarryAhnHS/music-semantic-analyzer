@@ -1,14 +1,16 @@
+# 👇 Add this early
+import sys
 import os
+
+TTMRPP_REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "external", "music-text-representation-pp"))
+if TTMRPP_REPO not in sys.path:
+    sys.path.append(TTMRPP_REPO)
 import torch
 import numpy as np
 import json
 import faiss
 from typing import Optional, List, Tuple
-import sys
-# Automatically add the TTMR++ repo to sys.path
-TTMRPP_REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "external", "music-text-representation-pp"))
-if TTMRPP_REPO not in sys.path:
-    sys.path.append(TTMRPP_REPO)
+
 from mtrpp.utils.eval_utils import load_ttmr_pp
 from mtrpp.utils.audio_utils import (
     int16_to_float32, float32_to_int16,
