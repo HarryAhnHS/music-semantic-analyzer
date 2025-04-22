@@ -53,7 +53,7 @@ def process_audio_hybrid(preview_path: str, full_path: str):
         if track_info["stem_is_ignorable"].get(stem_name, 0) == 1:
             print(f"Ignoring stem: {stem_name}")
             stem_tags[stem_name] = []
-            stem_summaries[stem_name] = "Empty stem. The {stem_name} is silent and does not contain any audio content."
+            stem_summaries[stem_name] = f"We detected that the {stem_name} is ignorable and does not contain meaningful audio content."
             continue
 
         stem_metadata = extract_metadata(stem_path)
