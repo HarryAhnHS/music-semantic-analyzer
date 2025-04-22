@@ -147,7 +147,7 @@ def generate_tags_and_summary_hybrid(metadata: dict, hybrid_neighbors: list[dict
     genre_names = metadata.get("genre_names", [])
     raw_tags = metadata.get("tags", [])
     location = metadata.get("location", "")
-    track_type = metadata.get("track_type", "")
+    track_type = metadata.get("track_info", {}).get("track_type", "")
     stem_type = metadata.get("stem_type", "")
 
     artist_bio = metadata.get("artist_bio", "")
@@ -223,7 +223,8 @@ def generate_tags_and_summary_hybrid(metadata: dict, hybrid_neighbors: list[dict
     - Tags: {", ".join(raw_tags)}
     - Artist Bio: {artist_bio}
     - Album Description: {album_description}
-    {f"- Stem Type: {stem_type}" if stem_type else f"- Track Type: {track_type}"}
+    - Overall Track Type: {track_type}
+    {f"- Stem Type: {stem_type}" if stem_type else ""}
 
     Here are a few similar tracks:
     {neighbor_text}

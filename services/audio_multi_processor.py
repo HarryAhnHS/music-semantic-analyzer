@@ -10,7 +10,6 @@ from services.stem_separator import separate_stems, classify_track_type
 from services.clap_manager import get_clap
 from services.text_embedder import TextEmbeddingIndex
 from services.ttmrpp_manager import get_ttmr
-from utils.audio_utils import is_ignorable_stem
 import json
 
 def process_audio_hybrid(preview_path: str, full_path: str):
@@ -50,12 +49,14 @@ def process_audio_hybrid(preview_path: str, full_path: str):
     stem_summaries = {}
 
     for stem_name, stem_path in stems.items():
-        stem_metadata = extract_metadata(stem_path)
-        if is_ignorable_stem(stem_path):
+        # ignore stems that are too quiet or have no audio content
+        if track_info["stem_is_ignorable"].get(stem_name, 0) == 1:
             print(f"Ignoring stem: {stem_name}")
             stem_tags[stem_name] = []
-            stem_summaries[stem_name] = ["Empty stem. The {stem_name} is silent and does not contain any audio content."]
+            stem_summaries[stem_name] = "Empty stem. The {stem_name} is silent and does not contain any audio content."
             continue
+
+        stem_metadata = extract_metadata(stem_path)
         stem_embedding = tagging_clap.get_embedding(stem_path)
         clap_neighbors = tagging_clap.query_neighbors_with_tagging_metadata(stem_embedding, k=3)
         ttmr_embedding = ttmr_embedder.get_audio_embedding(stem_path)

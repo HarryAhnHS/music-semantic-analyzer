@@ -33,16 +33,12 @@ def extract_preview_segment(full_path: str, output_path: str, segment_duration_s
 import numpy as np
 
 
-def is_ignorable_stem(stem_path: str, rms_thresh: float = 0.005, flatness_thresh: float = 0.4) -> bool:
-    y, sr = librosa.load(stem_path, sr=22050)
-
+def is_stem_ignorable(y, sr, rms_thresh=0.01):
     if y is None or len(y) == 0:
-        return True  # empty file
+        return True
 
     rms = librosa.feature.rms(y=y).mean()
-    flatness = librosa.feature.spectral_flatness(y=y).mean()
 
-    # stem is considered ignorable if:
-    # - it's very quiet overall
-    # - it's spectrally flat (noise or silence, not musical)
-    return rms < rms_thresh and flatness > flatness_thresh
+    print(f"[Stem Check] RMS: {rms:.5f}")
+
+    return rms < rms_thresh

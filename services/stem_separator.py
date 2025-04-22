@@ -4,6 +4,7 @@ import librosa
 from demucs.separate import main as demucs_main
 import os
 from configs.index_configs import SEPARATED_DIR
+from utils.audio_utils import is_stem_ignorable
 
 def separate_stems(audio_path: str, model: str = "htdemucs", cache_dir: str = SEPARATED_DIR) -> dict:
     """
@@ -76,20 +77,34 @@ def classify_track_type(stems: dict) -> str:
     vocal_ratio = vocal_energy / total_energy if total_energy else 0
     instrumental_ratio = instrumental_energy / total_energy if total_energy else 0
 
+    stem_is_ignorable = {}
+    for stem, path in stems.items():
+        try:
+            y, sr = librosa.load(path, sr=22050)
+            ignore = is_stem_ignorable(y, sr)
+            stem_is_ignorable[stem] = 1 if ignore else 0
+        except Exception as e:
+            print(f"⚠️ Failed to analyze stem {stem}: {e}")
+            stem_is_ignorable[stem] = 1
+
     print(f"🎧 Vocal Ratio: {vocal_ratio:.3f}, Instrumental Ratio: {instrumental_ratio:.3f}")
 
-    if vocal_ratio > 0.3 and instrumental_ratio > 0.3:
+    if vocal_ratio > 0.2 and instrumental_ratio > 0.2:
         track_type = "song"
-    elif vocal_ratio > 0.6:
+    elif vocal_ratio > 0.5:
         track_type = "acapella"
-    elif instrumental_ratio > 0.6:
+    elif instrumental_ratio > 0.5:
         track_type = "instrumental"
     else:
         track_type = "unknown"
 
     return {
-        "energy": energy,
-        "vocal_ratio": vocal_ratio,
-        "instrumental_ratio": instrumental_ratio,
-        "track_type": track_type
+        "energy": {k: to_native_float(v) for k, v in energy.items()},
+        "vocal_ratio": to_native_float(vocal_ratio),
+        "instrumental_ratio": to_native_float(instrumental_ratio),
+        "track_type": track_type,
+        "stem_is_ignorable": stem_is_ignorable
     }
+
+def to_native_float(x):
+    return float(x) if isinstance(x, (np.float32, np.float64)) else x
