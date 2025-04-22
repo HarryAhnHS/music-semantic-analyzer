@@ -5,6 +5,13 @@ import faiss
 from configs.index_configs import TAGGING_INDEX, TTMR_INDEX, TTMR_ARTIST_INDEX, TAGGING_META, TTMR_META, TTMR_ARTIST_META
 import json
 import os
+import subprocess
+
+# Ensure submodule is initialized
+if not os.path.exists("external/music-text-representation-pp/mtrpp"):
+    print("🔁 Initializing submodule manually at runtime...")
+    subprocess.run(["git", "submodule", "update", "--init", "--recursive"], check=True)
+
 app = FastAPI()
 
 @app.on_event("startup")
