@@ -1,7 +1,11 @@
 # services/ttmr_singleton.py
-from mtrpp.utils.eval_utils import load_ttmr_pp
-import torch
+import sys
 import os
+import torch
+TTMRPP_REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "external", "music-text-representation-pp"))
+if TTMRPP_REPO not in sys.path:
+    sys.path.append(TTMRPP_REPO)
+from mtrpp.utils.eval_utils import load_ttmr_pp
 
 # 🔐 Optional fallback download logic
 if not os.path.exists("models/ttmrpp/best.pth"):

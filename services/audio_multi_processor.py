@@ -95,6 +95,8 @@ def process_audio_hybrid(request: Request, preview_path: str, full_path: str):
         "stems": encoded_stems
     }
 
+    print(internal_metadata_entry)
+
     # internal_clap.add_embedding_to_index(clap_embedding, internal_metadata_entry)
     # internal_clap.save_index()
 
