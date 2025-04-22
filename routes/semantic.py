@@ -1,9 +1,7 @@
 from fastapi import APIRouter, UploadFile, File
 from fastapi.responses import JSONResponse
 import shutil
-import os
-import uuid
-from services.audio_processor import process_audio
+import os, shutil, uuid, tempfile
 from services.audio_multi_processor import process_audio_hybrid
 from configs.index_configs import UPLOAD_DIR, UPLOADS_PREVIEW_DIR
 from utils.audio_utils import extract_preview_segment
@@ -12,61 +10,37 @@ from services.stem_separator import classify_track_type
 
 router = APIRouter()
 
-@router.post("/ttmrpp")
-async def ttmrpp(file: UploadFile = File(...)):
-    if file.content_type not in ["audio/mpeg", "audio/wav", "audio/x-wav"]:
-        return JSONResponse(status_code=400, content={"error": "Only MP3 or WAV files are supported."})
-
-    return {
-        "status": "ttmrpp"
-    }
-
-@router.post("/analyze")
-async def analyze_song(file: UploadFile = File(...)):
-    if file.content_type not in ["audio/mpeg", "audio/wav", "audio/x-wav"]:
-        return JSONResponse(status_code=400, content={"error": "Only MP3 or WAV files are supported."})
-
-    ext = os.path.splitext(file.filename)[-1].lower()  # ".mp3", ".wav", etc.
-    filename = f"{uuid.uuid4()}{ext}"
-    file_path = os.path.join(UPLOAD_DIR, filename)
-    # Save full upload
-    with open(file_path, "wb") as buffer:
-        shutil.copyfileobj(file.file, buffer)
-
-    # Generate a preview for analysis (e.g., 30 seconds)
-    preview_path = os.path.join(UPLOADS_PREVIEW_DIR, filename)
-    extract_preview_segment(file_path, preview_path, segment_duration_sec=20)
-
-    result = process_audio(preview_path, file_path)
-
-    return {
-        "status": "analyzed",
-        "filename": filename,
-        "result": result
-    }
-
 @router.post("/analyze/hybrid")
 async def analyze_song_hybrid(file: UploadFile = File(...)):
     if file.content_type not in ["audio/mpeg", "audio/wav", "audio/x-wav"]:
         return JSONResponse(status_code=400, content={"error": "Only MP3 or WAV files are supported."})
 
-    ext = os.path.splitext(file.filename)[-1].lower()  # ".mp3", ".wav", etc.
-    filename = f"{uuid.uuid4()}{ext}"
-    file_path = os.path.join(UPLOAD_DIR, filename)
-    # Save full upload
-    with open(file_path, "wb") as buffer:
-        shutil.copyfileobj(file.file, buffer)
-    # Generate a preview for analysis (e.g., 30 seconds)
-    preview_path = os.path.join(UPLOADS_PREVIEW_DIR, filename)
-    extract_preview_segment(file_path, preview_path, segment_duration_sec=20)
+    # Extract extension based on the filename (real suffix)
+    ext = os.path.splitext(file.filename)[-1].lower()
 
-    result = process_audio_hybrid(preview_path, file_path)
+    # Save uploaded file to a temp location
+    with tempfile.NamedTemporaryFile(delete=False, suffix=ext) as full_temp:
+        contents = await file.read()
+        full_temp.write(contents)
+        full_temp.flush()
+        file_path = full_temp.name
 
-    return {
-        "status": "analyzed",
-        "filename": filename,
-        "result": result
-    }
+    # Create a separate temp file for preview output
+    preview_temp = tempfile.NamedTemporaryFile(delete=False, suffix=ext)
+    preview_path = preview_temp.name
+    preview_temp.close()
+
+    try:
+        extract_preview_segment(file_path, preview_path, segment_duration_sec=20)
+        result = process_audio_hybrid(preview_path, file_path)
+
+        return {
+            "status": "analyzed",
+            "result": result
+        }
+    finally:
+        os.remove(file_path)
+        os.remove(preview_path)
 
 @router.post("/test-energy")
 async def test_energy():

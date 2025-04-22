@@ -10,11 +10,14 @@ from services.stem_separator import separate_stems, classify_track_type
 from services.clap_manager import get_clap
 from services.text_embedder import TextEmbeddingIndex
 from services.ttmrpp_manager import get_ttmr
-import json
-
+from utils.audio_utils import encode_audio_base64
 def process_audio_hybrid(preview_path: str, full_path: str):
     # 1. Separate stems
     stems = separate_stems(preview_path)
+    encoded_stems = {
+        stem_name: encode_audio_base64(path)
+        for stem_name, path in stems.items()
+    }
 
     # 2. Classify track type
     track_info = classify_track_type(stems)
@@ -83,7 +86,8 @@ def process_audio_hybrid(preview_path: str, full_path: str):
         "summary": summary,
         "stem_tags": stem_tags,
         "stem_summaries": stem_summaries,
-        "similar_artists": overall_ttmr_artist_neighbors
+        "similar_artists": overall_ttmr_artist_neighbors,
+        "stems": encoded_stems
     }
 
     internal_clap.add_embedding_to_index(clap_embedding, internal_metadata_entry)

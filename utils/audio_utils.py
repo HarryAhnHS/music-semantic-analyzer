@@ -42,3 +42,9 @@ def is_stem_ignorable(y, sr, rms_thresh=0.01):
     print(f"[Stem Check] RMS: {rms:.5f}")
 
     return rms < rms_thresh
+
+import base64
+
+def encode_audio_base64(file_path):
+    with open(file_path, "rb") as f:
+        return base64.b64encode(f.read()).decode("utf-8")
