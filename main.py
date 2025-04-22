@@ -7,11 +7,6 @@ import json
 import os
 import subprocess
 
-# Ensure submodule is initialized
-if not os.path.exists("external/music-text-representation-pp/mtrpp"):
-    print("🔁 Initializing submodule manually at runtime...")
-    subprocess.run(["git", "submodule", "update", "--init", "--recursive"], check=True)
-
 app = FastAPI()
 
 @app.on_event("startup")
