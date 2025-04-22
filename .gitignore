@@ -47,6 +47,7 @@ data/matching_index/embeddings/*.faiss
 
 # TTMRRP models
 models/ttmrpp/*
+*.pth
 
 # Environment variables
 .env
