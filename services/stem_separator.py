@@ -38,33 +38,58 @@ def separate_stems(audio_path: str, model: str = "htdemucs", cache_dir: str = SE
     }
 
 
-def classify_track_type(stems: dict) -> str:
-    import librosa
-    import numpy as np
+import librosa
+import numpy as np
 
+def compute_rms_energy(path: str, sr: int = 22050) -> float:
+    try:
+        y, _ = librosa.load(path, sr=sr)
+        if y is None or len(y) == 0:
+            return 0.0
+        rms = librosa.feature.rms(y=y)
+        return np.mean(rms)
+    except Exception as e:
+        print(f"⚠️ Failed to compute RMS for {path}: {e}")
+        return 0.0
+
+def classify_track_type(stems: dict) -> str:
     energy = {
-        stem: np.mean(librosa.feature.rms(y=librosa.load(path, sr=None)[0]))
+        stem: compute_rms_energy(path)
         for stem, path in stems.items()
     }
 
-    print("energy", energy)
+    print("🔍 Stem energy breakdown:", energy)
 
-    vocal_energy = energy.get("vocals", 0)
+    # Filter out negligible stems (i.e., silence or bleed)
+    min_energy_threshold = 1e-4
+    filtered_energy = {k: v if v > min_energy_threshold else 0 for k, v in energy.items()}
+
+    total_energy = sum(filtered_energy.values())
+    if total_energy == 0:
+        return "unknown"
+
+    vocal_energy = filtered_energy.get("vocals", 0)
     instrumental_energy = sum(
-        energy.get(s, 0) for s in ["drums", "bass", "other"]
+        filtered_energy.get(s, 0) for s in ["drums", "bass", "other"]
     )
 
-    # Threshold to ignore residual noise/silence
-    min_energy_threshold = 1e-4
+    vocal_ratio = vocal_energy / total_energy if total_energy else 0
+    instrumental_ratio = instrumental_energy / total_energy if total_energy else 0
 
-    has_vocals = vocal_energy > min_energy_threshold
-    has_instrumentals = instrumental_energy > min_energy_threshold
+    print(f"🎧 Vocal Ratio: {vocal_ratio:.3f}, Instrumental Ratio: {instrumental_ratio:.3f}")
 
-    if has_vocals and has_instrumentals:
-        return "song"
-    elif has_vocals and not has_instrumentals:
-        return "acapella"
-    elif not has_vocals and has_instrumentals:
-        return "instrumental"
+    if vocal_ratio > 0.3 and instrumental_ratio > 0.3:
+        track_type = "song"
+    elif vocal_ratio > 0.6:
+        track_type = "acapella"
+    elif instrumental_ratio > 0.6:
+        track_type = "instrumental"
+    else:
+        track_type = "unknown"
 
-    return "unknown"  # fallback for silent or broken files
+    return {
+        "energy": energy,
+        "vocal_ratio": vocal_ratio,
+        "instrumental_ratio": instrumental_ratio,
+        "track_type": track_type
+    }

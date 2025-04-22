@@ -8,7 +8,7 @@ from time import time
 from tqdm import tqdm
 from datasets import load_dataset
 
-from services.ttmrpp_embedder import get_ttmr_audio_embedding
+from services.ttmrpp_manager import get_ttmr
 from configs.index_configs import TAGGING_AUDIO_DIR, TTMR_INDEX, TTMR_META
 
 from transformers import logging
@@ -53,6 +53,9 @@ print(f"⏭️ Already processed: {len(existing_ids)}\n")
 
 start_time = time()
 
+# ---------- Load TTMR++ Singleton ----------
+ttmr = get_ttmr(TTMR_INDEX, TTMR_META)
+
 # ----------- Main Loop -----------
 for path in tqdm(all_mp3s, desc="🎷 Embedding tracks"):
     filename = os.path.basename(path)
@@ -73,7 +76,7 @@ for path in tqdm(all_mp3s, desc="🎷 Embedding tracks"):
         continue
 
     try:
-        emb = get_ttmr_audio_embedding(path).numpy().astype("float32")
+        emb = ttmr.get_audio_embedding(path).numpy().astype("float32")
 
         if index is None:
             index = faiss.IndexFlatL2(emb.shape[0])

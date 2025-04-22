@@ -9,124 +9,165 @@ from tqdm import tqdm
 from datasets import load_dataset
 from fuzzywuzzy import process
 from time import time
+from transformers import logging
+import warnings
 
-from services.ttmrpp_embedder import get_ttmr_audio_embedding
+from services.ttmrpp_manager import get_ttmr
 from configs.index_configs import TAGGING_AUDIO_DIR, TTMR_ARTIST_INDEX, TTMR_ARTIST_META, TTMR_META
 
-BATCH_SIZE = 50
+warnings.filterwarnings("ignore", category=UserWarning)
+logging.set_verbosity_error()
 
-print("\U0001F4C2 Loading TTMR metadata...")
+# ---------- Config ----------
+BATCH_SIZE = 50
+print("\n🚀 Starting artist index build with resume + batch support...")
+
+# ---------- Load Metadata ----------
+print("📂 Loading TTMR metadata...")
 with open(TTMR_META, "r") as f:
     ttmr_meta = json.load(f)
+
 track_to_artist = {entry["track_id"]: entry["artist"] for entry in ttmr_meta}
-artist_to_track_ids = defaultdict(list)
-for track_id, artist in track_to_artist.items():
-    artist_to_track_ids[artist].append(track_id)
 
-# Filter to artists with > 2 tracks
-filtered_artists = {artist for artist, tracks in artist_to_track_ids.items() if len(tracks) >= 2}
+# Filter for artists with 2+ tracks
+artist_counts = Counter(track_to_artist.values())
+valid_artists = {artist for artist, count in artist_counts.items() if count >= 2}
 
-print("\U0001F4C5 Loading OLGA dataset...")
+# ---------- Load OLGA ----------
+print("📅 Loading OLGA dataset...")
 olga = load_dataset("seungheondoh/olga-track-to-artist", split="train")
-
-print("\U0001F9F9 Building fuzzy artist similarity map from OLGA...")
 olga_artist_sim_map = defaultdict(Counter)
+
+print("🧹 Building fuzzy artist similarity map...")
 for entry in olga:
     sim_text = entry.get("sim_artist_text", "")
     names = [n.strip() for n in sim_text.split("[SEP]") if n.strip()]
     for name in names:
         olga_artist_sim_map[name.lower()].update(names)
 
-existing_artist_names = set()
-artist_metadata = []
-embedding_buffer = []
-metadata_buffer = []
-
+# ---------- Resume Setup ----------
 if os.path.exists(TTMR_ARTIST_META):
     with open(TTMR_ARTIST_META, "r") as f:
         artist_metadata = json.load(f)
-    existing_artist_names = set(entry["artist_name"] for entry in artist_metadata)
+    processed_artists = set(entry["artist_name"] for entry in artist_metadata)
+    print(f"🔁 Resuming from {len(processed_artists)} artists.")
+else:
+    artist_metadata = []
+    processed_artists = set()
 
-index = None
 if os.path.exists(TTMR_ARTIST_INDEX):
-    index = faiss.read_index(TTMR_ARTIST_INDEX)
+    print("📦 Loading existing FAISS index...")
+    index = faiss.read_index(str(TTMR_ARTIST_INDEX))
+else:
+    index = None
 
-print("\U0001F50E Searching local MP3s...")
+# ---------- Collect Valid MP3 Paths ----------
+print("🔎 Scanning MP3s...")
 all_mp3s = glob(os.path.join(TAGGING_AUDIO_DIR, "**/*.mp3"), recursive=True)
-print(f"\n\U0001F3B5 MP3s found: {len(all_mp3s)}")
 
-artist_to_embeddings = defaultdict(list)
-artist_to_tracks = defaultdict(list)
+artist_to_paths = defaultdict(list)
+track_to_path = {}
 
-for path in tqdm(all_mp3s, desc="\U0001F3BF Embedding"):
-    filename = os.path.basename(path)
-    match = re.match(r"(\d+)\.mp3", filename)
+for path in all_mp3s:
+    match = re.match(r"(\d+)\.mp3", os.path.basename(path))
     if not match:
         continue
     track_id = match.group(1)
-    artist_name = track_to_artist.get(track_id)
-    if not artist_name or artist_name not in filtered_artists:
-        continue
-    try:
-        emb = get_ttmr_audio_embedding(path).numpy().astype("float32")
-        artist_to_embeddings[artist_name].append(emb)
-        artist_to_tracks[artist_name].append(track_id)
-    except Exception as e:
-        print(f"[ERROR] Failed to embed {track_id}: {e}")
+    artist = track_to_artist.get(track_id)
+    if artist in valid_artists:
+        artist_to_paths[artist].append(path)
+        track_to_path[track_id] = path
 
+# ---------- Load TTMR++ Singleton ----------
+ttmr = get_ttmr(TTMR_ARTIST_INDEX, TTMR_ARTIST_META)
+
+# ---------- Main Loop ----------
+embedding_buffer = []
+metadata_buffer = []
+written, skipped, crashed = 0, 0, 0
 start_time = time()
-written = 0
 
 try:
-    for artist, embs in artist_to_embeddings.items():
-        if artist in existing_artist_names:
+    for artist, paths in tqdm(artist_to_paths.items(), desc="🎨 Artists"):
+        if artist in processed_artists:
+            skipped += 1
             continue
-        if len(embs) < 2:
-            continue
 
-        avg_vector = np.mean(embs, axis=0).astype("float32")
-        embedding_buffer.append(avg_vector)
+        try:
+            embs = []
+            track_ids = []
 
-        best_match, score = process.extractOne(artist.lower(), olga_artist_sim_map.keys())
-        sim_name_counter = Counter()
-        if score > 90:
-            similar_artists = olga_artist_sim_map[best_match]
-            for sim_name, count in similar_artists.items():
-                if sim_name != artist.lower():
-                    sim_name_counter[sim_name] += count
+            for path in paths:
+                track_id = re.match(r"(\d+)\.mp3", os.path.basename(path)).group(1)
+                emb = ttmr.get_audio_embedding(path)
+                embs.append(emb)
+                track_ids.append(track_id)
 
-        top_sim_names = [name.title() for name, _ in sim_name_counter.most_common(5)]
+            if len(embs) == 0:
+                continue
 
-        artist_metadata.append({
-            "artist_name": artist,
-            "track_ids": artist_to_tracks[artist],
-            "sim_artist_names": top_sim_names
-        })
+            avg_vector = np.mean(embs, axis=0).astype("float32")
+            embedding_buffer.append(avg_vector)
 
-        written += 1
-        if written % BATCH_SIZE == 0:
-            print("\U0001F4BE Flushing...")
-            if index is None:
-                index = faiss.IndexFlatL2(avg_vector.shape[0])
-            index.add(np.stack(embedding_buffer))
-            faiss.write_index(index, TTMR_ARTIST_INDEX)
-            with open(TTMR_ARTIST_META, "w") as f:
-                json.dump(artist_metadata, f, indent=2)
-            embedding_buffer.clear()
+            # Fuzzy similarity via OLGA
+            sim_name_counter = Counter()
+            best_match, score = process.extractOne(artist.lower(), olga_artist_sim_map.keys())
 
-except KeyboardInterrupt:
-    print("\u274C Interrupted! Saving progress...")
+            if score > 90:
+                for sim_name, count in olga_artist_sim_map[best_match].items():
+                    if sim_name != artist.lower():
+                        sim_name_counter[sim_name] += count
+
+            top_sim_names = [name.title() for name, _ in sim_name_counter.most_common(5)]
+
+            artist_metadata_entry = {
+                "artist_name": artist,
+                "track_ids": track_ids,
+                "sim_artist_names": top_sim_names
+            }
+
+            metadata_buffer.append(artist_metadata_entry)
+            written += 1
+
+            if written <= 3 or written % 10 == 0:
+                print(f"📌 Added {artist} with {len(track_ids)} tracks")
+
+            # Flush
+            if len(metadata_buffer) >= BATCH_SIZE:
+                print("💾 Writing batch to disk...")
+                if index is None:
+                    index = faiss.IndexFlatL2(avg_vector.shape[0])
+                index.add(np.stack(embedding_buffer))
+
+                artist_metadata.extend(metadata_buffer)
+                faiss.write_index(index, TTMR_ARTIST_INDEX)
+                with open(str(TTMR_ARTIST_META), "w") as f:
+                    json.dump(artist_metadata, f, indent=2)
+
+                processed_artists.update(entry["artist_name"] for entry in metadata_buffer)
+                embedding_buffer.clear()
+                metadata_buffer.clear()
+
+        except Exception as e:
+            print(f"[ERROR] Failed on {artist}: {e}")
+            crashed += 1
 
 finally:
+    # ---------- Final Flush ----------
     if embedding_buffer:
-        print("\U0001F52C Final flush...")
+        print("🧬 Final batch flush...")
         if index is None:
             index = faiss.IndexFlatL2(embedding_buffer[0].shape[0])
         index.add(np.stack(embedding_buffer))
-        faiss.write_index(index, TTMR_ARTIST_INDEX)
-        with open(TTMR_ARTIST_META, "w") as f:
+        artist_metadata.extend(metadata_buffer)
+        faiss.write_index(index, str(TTMR_ARTIST_INDEX))
+        with open(str(TTMR_ARTIST_META), "w") as f:
             json.dump(artist_metadata, f, indent=2)
 
-    print("\n\u2705 Done.")
-    print(f"\U0000231B Duration: {time() - start_time:.1f}s")
-    print(f"\U00002705 Artists written: {written}")
+    end_time = time()
+
+    print("\n✅ Done.")
+    print(f"⏱️ Duration: {end_time - start_time:.1f}s")
+    print(f"✔️ Embedded: {written} artists")
+    print(f"⏭️ Skipped (already processed): {skipped}")
+    print(f"💥 Crashed: {crashed}")
