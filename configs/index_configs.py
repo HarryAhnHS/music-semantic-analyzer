@@ -11,6 +11,8 @@ TAGGING_META = BASE_DIR / "data/tagging_index/metadata/metadata.json"
 
 TTMR_INDEX = BASE_DIR / "data/tagging_index/embeddings/ttmr_index.faiss"
 TTMR_META = BASE_DIR / "data/tagging_index/metadata/ttmr_metadata.json"
+TTMR_ARTIST_INDEX = BASE_DIR / "data/tagging_index/embeddings/ttmr_artist_index.faiss"
+TTMR_ARTIST_META = BASE_DIR / "data/tagging_index/metadata/ttmr_artist_metadata.json"
 
 INTERNAL_INDEX = BASE_DIR / "data/matching_index/embeddings/internal_index.faiss"
 INTERNAL_META = BASE_DIR / "data/matching_index/metadata/internal_metadata.json"
