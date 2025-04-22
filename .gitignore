@@ -45,6 +45,9 @@ data/tagging_index/fma/metadata/*
 data/matching_index/metadata/*.json
 data/matching_index/embeddings/*.faiss
 
+# TTMRRP models
+models/ttmrpp/*
+
 # Environment variables
 .env
 
