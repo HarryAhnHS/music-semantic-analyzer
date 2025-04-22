@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 from sklearn import metrics
 from omegaconf import DictConfig, OmegaConf
-from mtrpp.model.dual_encoder import DualEncoderModel
+from external.music_text_representation_pp.mtrpp.model.dual_encoder import DualEncoderModel
     
 def get_query2target_idx(query2target, target2idx):
   query2target_idx = {}

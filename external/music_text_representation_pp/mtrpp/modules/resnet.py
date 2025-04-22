@@ -2,8 +2,8 @@
 import torch
 import torch.nn as nn
 from collections import OrderedDict
-from mtrpp.modules.mel import MelEncoder
-from mtrpp.modules.pooling_layer import AttentionPool2d
+from external.music_text_representation_pp.mtrpp.modules.mel import MelEncoder
+from external.music_text_representation_pp.mtrpp.modules.pooling_layer import AttentionPool2d
 
 class ModifiedResNet(nn.Module):
     def __init__(self, layers, output_dim=768, heads=8, n_mels=128, width=64, n_fft=1024, hop_size=0.01, duration=10, sr=22050):
