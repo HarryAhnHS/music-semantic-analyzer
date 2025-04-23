@@ -134,9 +134,3 @@ All required model files, FAISS indices, and metadata are <100MB and version-con
 - [CLAP: LAION Contrastive Language-Audio Pretraining](https://arxiv.org/abs/2211.06687)
 - [TTMR++: Finetuned LLM + Metadata for Text-to-Music Retrieval](https://github.com/seungheondoh/music-text-representation-pp)
 - [Free Music Archive Dataset (FMA)](https://github.com/mdeff/fma)
-
----
-
-## License
-
-MIT
