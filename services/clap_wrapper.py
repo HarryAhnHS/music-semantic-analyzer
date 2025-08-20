@@ -1,12 +1,12 @@
 import torch
-torch.set_num_threads(1)
+# torch.set_num_threads(1)  # Removed to enable concurrent processing
 import librosa
 import numpy as np
 import os
 import faiss
 import ujson as json
 from typing import Optional
-from services.clap_singleton import CLAP_MODEL, CLAP_DEVICE
+from services.clap_singleton import get_clap_model_instance, get_clap_device
 
 def int16_to_float32(x):
     return (x / 32767.0).astype(np.float32)
@@ -17,11 +17,9 @@ def float32_to_int16(x):
 
 class CLAPWrapper:
     def __init__(self, app=None, variant: Optional[str] = None, faiss_path=None, metadata_path=None, read_only: bool = False):
-        print("[CLAP init] Selecting device...")
-        self.device = CLAP_DEVICE
-        print(f"[CLAP init] Device set to {self.device}")
-        self.model = CLAP_MODEL
-        print("[CLAP init] Checkpoint loaded.")
+        # Lazy loading - models loaded on first use
+        self._model = None
+        self._device = None
 
         self.index = None
         self.metadata = []
@@ -69,6 +67,20 @@ class CLAPWrapper:
                     self.metadata = []
             else:
                 self.metadata = []
+
+    @property
+    def model(self):
+        """Lazy load CLAP model on first access"""
+        if self._model is None:
+            self._model = get_clap_model_instance()
+        return self._model
+
+    @property
+    def device(self):
+        """Lazy load device on first access"""
+        if self._device is None:
+            self._device = get_clap_device()
+        return self._device
 
     def get_embedding(self, file_path: str) -> list[float]:
         audio_data, _ = librosa.load(file_path, sr=48000)

@@ -1,7 +1,7 @@
 from fastapi import APIRouter, UploadFile, File
 from fastapi.responses import JSONResponse
 import shutil
-import os, shutil, uuid, tempfile
+import os, shutil, uuid, tempfile, time
 from services.audio_multi_processor import process_audio_hybrid
 from configs.index_configs import UPLOAD_DIR, UPLOADS_PREVIEW_DIR
 from utils.audio_utils import extract_preview_segment
@@ -9,6 +9,15 @@ from fastapi import Request
 from services.stem_separator import classify_track_type
 
 router = APIRouter()
+
+@router.get("/health")
+async def health_check():
+    """Lightweight health check that doesn't load models"""
+    return {
+        "status": "healthy", 
+        "timestamp": time.time(),
+        "service": "bridge-ml-api"
+    }
 
 @router.post("/analyze/hybrid")
 async def analyze_song_hybrid(request: Request, file: UploadFile = File(...)):

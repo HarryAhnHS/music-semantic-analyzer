@@ -46,18 +46,19 @@ def load_faiss_indices():
     }
     print("[FAISS INIT] All indices and metadata loaded successfully ✅")
 
-@app.on_event("startup")
-def prepare_models():
-    # Download TTMR++ model if not present
-    if not os.path.exists("models/ttmrpp/best.pth"):
-        from scripts.download_ttmr_models import download_ttmrpp
-        download_ttmrpp()
-
-    # Download CLAP model if not present
-    clap_ckpt_path = "checkpoints/music_speech_audioset_epoch_15_esc_89.98.pt"
-    if not os.path.exists(clap_ckpt_path):
-        from scripts.download_clap_checkpoint import download_checkpoint
-        download_checkpoint()
+# Model downloading moved to singleton files for lazy loading
+# @app.on_event("startup")
+# def prepare_models():
+#     # Download TTMR++ model if not present
+#     if not os.path.exists("models/ttmrpp/best.pth"):
+#         from scripts.download_ttmr_models import download_ttmrpp
+#         download_ttmrpp()
+#
+#     # Download CLAP model if not present
+#     clap_ckpt_path = "checkpoints/music_speech_audioset_epoch_15_esc_89.98.pt"
+#     if not os.path.exists(clap_ckpt_path):
+#         from scripts.download_clap_checkpoint import download_checkpoint
+#         download_checkpoint()
 
 
 # Register the route
@@ -68,4 +69,18 @@ if __name__ == "__main__":
     import uvicorn
 
     port = int(os.environ.get("PORT", 8000))
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    
+    # Production configuration optimized for Railway
+    uvicorn.run(
+        app, 
+        host="0.0.0.0", 
+        port=port,
+        workers=1,  # Railway typically allocates 1-2 CPU cores
+        loop="asyncio",
+        access_log=False,  # Reduce I/O overhead
+        reload=False,
+        # Enable concurrent request handling
+        limit_concurrency=None,  # No artificial concurrency limit
+        limit_max_requests=None,  # No request limit
+        timeout_keep_alive=5,  # Keep connections alive for 5 seconds
+    )

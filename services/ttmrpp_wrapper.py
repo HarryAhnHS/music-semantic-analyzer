@@ -12,7 +12,7 @@ from external.music_text_representation_pp.mtrpp.utils.audio_utils import (
     load_audio, STR_CH_FIRST
 )
 
-from services.ttmrpp_singleton import TTMR_MODEL, TTMR_DEVICE
+from services.ttmrpp_singleton import get_ttmr_model_instance, get_ttmr_device
 
 
 SR = 22050
@@ -32,8 +32,9 @@ class TTMRPPWrapper:
         model_type: str = "best",
         gpu: int = 0,
     ):
-        self.device = TTMR_DEVICE
-        self.model = TTMR_MODEL
+        # Lazy loading - models loaded on first use
+        self._model = None
+        self._device = None
         self.read_only = read_only
         self.index = None
         self.metadata = []
@@ -79,6 +80,19 @@ class TTMRPPWrapper:
             else:
                 self.metadata = []
 
+    @property
+    def model(self):
+        """Lazy load TTMR++ model on first access"""
+        if self._model is None:
+            self._model = get_ttmr_model_instance()
+        return self._model
+
+    @property
+    def device(self):
+        """Lazy load device on first access"""
+        if self._device is None:
+            self._device = get_ttmr_device()
+        return self._device
 
     def _load_model(self, save_dir: str, model_type: str):
         os.makedirs(save_dir, exist_ok=True)

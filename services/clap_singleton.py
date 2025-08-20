@@ -1,6 +1,7 @@
 import os
 import torch
 import laion_clap
+from functools import lru_cache
 
 CKPT_PATH = "checkpoints/music_speech_audioset_epoch_15_esc_89.98.pt"
 
@@ -13,9 +14,21 @@ if not os.path.exists(CKPT_PATH):
     except Exception as e:
         print(f"[CLAP Model] Failed to download checkpoint: {e}")
 
+@lru_cache(maxsize=1)
+def get_clap_model():
+    """Lazy load CLAP model only when first needed"""
+    print("[CLAP Model] Loading model on demand...")
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    model = laion_clap.CLAP_Module(enable_fusion=False, amodel="HTSAT-base")
+    model.load_ckpt(CKPT_PATH)
+    print("[CLAP Model] Model loaded successfully.")
+    return model, device
 
-print("[CLAP Model] Loading global model...")
-CLAP_DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-CLAP_MODEL = laion_clap.CLAP_Module(enable_fusion=False, amodel="HTSAT-base")
-CLAP_MODEL.load_ckpt("checkpoints/music_speech_audioset_epoch_15_esc_89.98.pt")
-print("[CLAP Model] Model loaded successfully.")
+# Lazy loading - models only loaded when first accessed
+def get_clap_device():
+    _, device = get_clap_model()
+    return device
+
+def get_clap_model_instance():
+    model, _ = get_clap_model()
+    return model
