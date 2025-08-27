@@ -18,7 +18,7 @@ This project powers semantic tagging, embedding, and analysis of audio uploads. 
 ## 📁 Project Structure
 
 ```bash
-bridge-ml-api/
+music-semantic-analyzer/
 ├── services/
 │   ├── clap_wrapper.py             # CLAP embedding + FAISS handling
 │   ├── ttmrpp_wrapper.py           # TTMR++ embedding + FAISS handling
@@ -44,8 +44,8 @@ bridge-ml-api/
 ### 1. Clone and activate environment
 
 ```bash
-git clone https://github.com/HarryAhnHS/bridge-ml-api.git
-cd bridge-ml-api
+git clone https://github.com/HarryAhnHS/music-semantic-analyzer.git
+cd music-semantic-analyzer
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
