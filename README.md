@@ -1,6 +1,6 @@
-# bridge-ml-api
+# music-semantic-analyzer
 
-**bridge-ml-api** powers semantic tagging, embedding, and analysis of audio uploads for BRIDGE, an AI-based music collaboration platform. This backend leverages CLAP and TTMR++ embeddings, stem extraction, and LLM-driven caption/tag generation to provide real-time music similarity search and metadata enrichment.
+This project powers semantic tagging, embedding, and analysis of audio uploads. This backend leverages CLAP and TTMR++ embeddings, stem extraction, and LLM-driven caption/tag generation to provide music similarity search and metadata enrichment.
 
 ---
 
